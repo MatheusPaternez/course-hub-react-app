@@ -13,13 +13,13 @@ Use bullets; keep it brief. Repeat for each day of the sprint.
 - Kenta — Yesterday:Check the page design and Decided basic ideas / Today:Desturacturing tasks  / Blockers:
 ## Day 3
 - Tiana — Yesterday:Designed Dashboard and making animation design   / Today:dashbord on homepage(done) and team-up page(inprogress) design  / Blockers:
-- Matheus — Yesterday:   / Today:  / Blockers:
+- Matheus — Yesterday:Made the repository for React app  / Today:Started HTML with Tailwind  / Blockers:
 - Kenta — Yesterday:Desturacturing tasks / Today:making plan and sort out sprint documents  / Blockers:
 
 ## Day 4
-- Tiana — Yesterday:   / Today:  / Blockers:
-- Matheus — Yesterday:   / Today:  / Blockers:
-- Kenta — Yesterday:   / Today:  / Blockers:
+- Tiana — Yesterday:team-up/ Dashboard home uxui design   / Today:fix Dashboard home/ resister /setting page/ find team mates page design / team-up page (log-out page) uxui  / Blockers:
+- Matheus — Yesterday:Started HTML with Tailwind   / Today: Continue HTML and Tailwind  / Blockers:
+- Kenta — Yesterday:   / Today: design  / Blockers:
 
 ## Day 5
 - Tiana — Yesterday:   / Today:  / Blockers:
