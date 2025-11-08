@@ -19,7 +19,7 @@ Use bullets; keep it brief. Repeat for each day of the sprint.
 ## Day 4
 - Tiana — Yesterday:team-up/ Dashboard home uxui design   / Today:fix Dashboard home/ resister /setting page/ find team mates page design / team-up page (log-out page) uxui  / Blockers:
 - Matheus — Yesterday:Started HTML with Tailwind   / Today: Continue HTML and Tailwind  / Blockers:
-- Kenta — Yesterday:   / Today: design  / Blockers:
+- Kenta — Yesterday:making plan and sort out sprint documents    / Today: Start to implement Course-Search page and make it jsx / Blockers:
 
 ## Day 5
 - Tiana — Yesterday:   / Today:  / Blockers:
