@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
+import HomePageHeader from './pages/HomePageHeader';
 import LoginPopup from './pages/LoginPopup';
 
 export default function App() {
@@ -7,7 +7,8 @@ export default function App() {
         <BrowserRouter>
             <Routes>
                 <Route path='/'>
-                    <Route index element={<LoginPopup />} />
+                    <Route element={<LoginPopup />} />
+                    <Route index element={<HomePageHeader/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
