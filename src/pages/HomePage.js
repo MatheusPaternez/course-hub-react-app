@@ -1,50 +1,14 @@
 import React from 'react';
 import homepageBanner from '../assets/img/homepage-banner.jpg';
-import Logo from '../assets/img/logo.png';
-import Settings from '../assets/img/settings-icon.png';
-import User from '../assets/img/user-icon.png'
 
 export default function HomePageHeader() {
     return (
-        <header>
+        <>
             <div
                 className="relative min-h-[80vh] flex items-center justify-center bg-cover bg-center text-white text-center px-4 py-20"
                 style={{
                     backgroundImage: `linear-gradient(rgba(34, 58, 67,0.9), rgba(34, 58, 67,0.9)),url(${homepageBanner})`
-                }}
-            >
-                {/* Top navigation bar */}
-                <div className="absolute top-0 left-0 right-0 z-20">
-                    <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-                        {/* Left: logo */}
-                        <div className="flex items-center gap-3">
-                            {/* logo */}
-                            <img src={Logo} className='w-10' />
-                            <span className="text-xl text-blue-300">Sync-Hub</span>
-                        </div>
-
-                        {/* Center: nav links */}
-                        <nav className="hidden md:flex gap-6 text-sm text-gray-200">
-                            <a href="#" className="hover:text-white transition text-blue-300">Home</a>
-                            <a href="#" className="hover:text-white transition">Course</a>
-                            <a href="#" className="hover:text-white transition">Dashboard</a>
-                            <a href="#" className="hover:text-white transition">Team-Up</a>
-                            <a href="#" className="hover:text-white transition">My Work</a>
-                        </nav>
-
-                        {/* Right: profile / actions */}
-                        <div className="flex items-center gap-3">
-                            <button className="hidden md:flex items-center gap-3 bg-white/6 hover:bg-white/12 px-3 py-2 rounded-full transition">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white font-semibold"><img src={User} /></div>
-                                <span className="text-sm text-gray-200">Kenta</span>
-                            </button>
-                            <button aria-label="settings" className="p-2 rounded-full bg-white/6 hover:bg-white/12 transition">
-                                <img src={Settings} className='w-6 text-white-300' />
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
+                }}>
                 {/* Content */}
                 <div className="max-w-4xl z-10">
                     {/* Main headline */}
@@ -136,6 +100,6 @@ export default function HomePageHeader() {
                     </div>
                 </div>
             </section>
-        </header>
+        </>
     );
 };
