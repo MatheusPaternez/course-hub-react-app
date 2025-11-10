@@ -3,6 +3,7 @@ import Course2 from "../assets/img/Course2.png";
 import Course3 from "../assets/img/Course3.png";
 import { FaStar } from 'react-icons/fa';
 export default function CourseSearch() {
+    const courses = [{ courseId: '1', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course1.png', review: 4.5, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Beginer' }, { courseId: '2', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course2.png', review: 4.6, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Beginer' },{courseId:'3', CourseTitle:'Java Script for Front-End Developer', imgPath:'../assets/img/Course3.png', review:4.2, teacher:'Milad torabi', estimatedTime:64, difficulty:'Beginer'},{courseId:'4', CourseTitle:'Java Script for Front-End Developer', imgPath:'../assets/img/Course4.png', review:4.5, teacher:'Milad torabi', estimatedTime:64, difficulty:'Beginer'},{ courseId: '5', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course5.png', review: 4.5, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Intermediate' }, { courseId: '6', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course6.png', review: 4.7, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Expart' }];
     return (
         <>
             <div className="w-screen h-full pl-16 pt-16 bg-blue-600 bg-[#001c27] grid grid-cols-[100px_1fr] h-screen">
