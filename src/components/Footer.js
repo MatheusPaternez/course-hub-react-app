@@ -11,8 +11,8 @@ export default function Footer(){
     return (
         <footer className="bg-[#001c27] text-gray-200">
             {/* Top: links grid */}
-            <div className="max-w-7xl mx-auto px-6 py-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
+            <div className="max-w-10xl mx-auto px-6 py-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 px-30">
                     {/* Column: Home */}
                     <div>
                         <a className="text-white font-semibold mb-4" href="#">Home</a>
