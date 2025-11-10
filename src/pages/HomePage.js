@@ -2,6 +2,7 @@ import homepageBanner from '../assets/img/homepage-banner.jpg';
 import CourseList from '../components/CourseList';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import NavBar from '../components/NavBar';
 
 export default function HomePageHeader() {
     return (
