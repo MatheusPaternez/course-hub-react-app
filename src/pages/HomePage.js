@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import homepageBanner from '../assets/img/homepage-banner.jpg';
+import CourseList from '../components/CourseList';
 
 export default function HomePageHeader() {
     return (
-        <>
+        <main>
             <div
                 className="relative min-h-[80vh] flex items-center justify-center bg-cover bg-center text-white text-center px-4 py-20"
                 style={{
@@ -100,6 +101,7 @@ export default function HomePageHeader() {
                     </div>
                 </div>
             </section>
-        </>
+            <CourseList/>
+        </main>
     );
 };
