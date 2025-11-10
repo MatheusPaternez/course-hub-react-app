@@ -22,6 +22,6 @@ Use bullets; keep it brief. Repeat for each day of the sprint.
 - Kenta — Yesterday:making plan and sort out sprint documents    / Today: Start to implement Course-Search page and make it jsx / Blockers:
 
 ## Day 5
-- Tiana — Yesterday:   / Today:  / Blockers:
-- Thales — Yesterday:   / Today:  / Blockers:
-- Kenta— Yesterday:   / Today:  / Blockers:
+- Tiana — Yesterday:find teammates page design  / Today:  / Blockers:
+- Matheus — Yesterday:Continue HTML and Tailwind/ Today:Polished homepage design and implement header and footer and nav bar / Blockers:
+- Kenta— Yesterday:implemented Course-Search page and make it jsx  / Today:Fix the Course Search design and task management  / Blockers:
