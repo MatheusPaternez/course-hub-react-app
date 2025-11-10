@@ -2,11 +2,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPopup from './pages/LoginPopup';
 import CourseSearch from './pages/CourseSearch';
+import NavBar from './components/NavBar';
 
 export default function App() {
     return (
         <>
-        <BrowserRouter>
+        {/* <BrowserRouter>
             <Routes>
                 <Route path='/'>
                     <Route element={<LoginPopup />} />
@@ -15,7 +16,8 @@ export default function App() {
                     <Route path="course" element={<CourseSearch />} /> 
                 </Route>
             </Routes>
-        </BrowserRouter>
+        </BrowserRouter> */}
+        <NavBar/>
         </>
     )
 }
