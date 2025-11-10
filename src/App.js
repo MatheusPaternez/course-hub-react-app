@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPopup from './pages/LoginPopup';
+import CourseSearch from './pages/CourseSearch';
 
 export default function App() {
     return (
@@ -8,6 +9,7 @@ export default function App() {
             <Routes>
                 <Route path='/'>
                     <Route index element={<LoginPopup />} />
+                    <Route path="course" element={<CourseSearch />} /> 
                 </Route>
             </Routes>
         </BrowserRouter>
