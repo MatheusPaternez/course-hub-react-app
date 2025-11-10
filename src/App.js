@@ -5,13 +5,13 @@ import CourseSearch from './pages/CourseSearch';
 
 export default function App() {
     return (
-        // <BrowserRouter>
-        //     <Routes>
-        //         <Route path='/'>
-        //             <Route index element={<LoginPopup />} />
-        //         </Route>
-        //     </Routes>
-        // </BrowserRouter>
-        <CourseSearch></CourseSearch>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/'>
+                    <Route index element={<LoginPopup />} />
+                    <Route path="course" element={<CourseSearch />} /> 
+                </Route>
+            </Routes>
+        </BrowserRouter>
     )
 }
