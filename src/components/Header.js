@@ -1,0 +1,46 @@
+import React from 'react';
+import Logo from '../assets/img/logo.png';
+import Settings from '../assets/img/settings-icon.png';
+
+export default function Header() {
+    return (
+        <header className="relative bg-[#001c27]">
+            {/* Top bar container */}
+            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+                {/* LEFT: Logo */}
+                <div className="flex items-center gap-3">
+                    <img src={Logo} alt='Logo' />
+                    {/* Brand name */}
+                    <span className="text-lg md:text-xl text-blue-400">Sync-Hub</span>
+                </div>
+
+                {/* CENTER: Primary navigation */}
+                <nav className="hidden md:flex gap-6 text-sm text-gray-200" aria-label="Primary">
+                    <a href="#" className="hover:text-blue-500 transition">Home</a>
+                    <a href="#" className="hover:text-blue-500 transition">Course</a>
+                    <a href="#" className="hover:text-blue-500 transition">Dashboard</a>
+                    <a href="#" className="hover:text-blue-500 transition">Team-Up</a>
+                    <a href="#" className="hover:text-blue-500 transition">My Work</a>
+                </nav>
+
+                {/* RIGHT: Actions / profile */}
+                <div className="flex items-center gap-3">
+                    {/* Login link */}
+                    <a href="#" className="text-sm text-gray-200 hover:text-white">Login</a>
+
+                    {/* Sign up button */}
+                    <a href="#" className="hidden sm:inline-flex items-center px-3 py-1.5 bg-blue-500 hover:bg-blue-600 
+                    text-white text-sm rounded-md transition">Sign up</a>
+
+                    {/* Settings / icon placeholder */}
+                    <button
+                        aria-label="Settings"
+                        className="p-2 rounded-full bg-white/6 hover:bg-white/12 transition"
+                    >
+                        <img src={Settings} className='w-5' />
+                    </button>
+                </div>
+            </div>
+        </header>
+    );
+}
