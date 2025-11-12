@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../assets/img/logo.png';
 import Settings from '../assets/img/settings-icon.png';
+import { Outlet } from 'react-router-dom';
 
 export default function Header() {
     return (
@@ -41,6 +42,7 @@ export default function Header() {
                     </button>
                 </div>
             </div>
+            <Outlet/>
         </header>
     );
 }

@@ -4,23 +4,22 @@ import LoginPopup from './pages/LoginPopup';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CourseSearch from './pages/CourseSearch';
+import Login from './components/Login';
 
 export default function App() {
     return (
         <>
-        <Header />
-        <BrowserRouter>
-            <Routes>
-                <Route path='/'>
-                    <Route element={<LoginPopup />} />
-                    <Route element={<HomePage/>}/>
-                    <Route element={<Header/>}/>
-                    <Route index element={<LoginPopup />} />
-                    <Route index path="course" element={<CourseSearch />} /> 
-                </Route>
-            </Routes>
-        </BrowserRouter>
-        <Footer />
+            <BrowserRouter>
+                <Routes>
+                    <Route index path='login' element={<LoginPopup />} />
+                    <Route path='/' element={<Header />}>
+                        <Route path='home' element={<HomePage />} />
+                        <Route path='auth' element={<Login />} />
+                        <Route path="course" element={<CourseSearch />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+            <Footer />
         </>
     )
 }

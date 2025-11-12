@@ -11,11 +11,12 @@ export default function LoginPopup() {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    // Handle form submit (prevents full page reload)
+    // Handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
 
         console.log(email, password);
+        Login({})
     };
 
     return (
