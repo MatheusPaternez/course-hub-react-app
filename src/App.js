@@ -8,8 +8,8 @@ import CourseSearch from './pages/CourseSearch';
 export default function App() {
     return (
         <>
-        <Header />
         <BrowserRouter>
+        <Header />
             <Routes>
                 <Route path='/'>
                     <Route element={<LoginPopup />} />
