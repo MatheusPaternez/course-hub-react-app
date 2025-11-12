@@ -16,7 +16,7 @@ export default function App() {
                     <Route element={<HomePage/>}/>
                     <Route element={<Header/>}/>
                     <Route index element={<LoginPopup />} />
-                    <Route path="course" element={<CourseSearch />} /> 
+                    <Route index path="course" element={<CourseSearch />} /> 
                 </Route>
             </Routes>
         </BrowserRouter>
