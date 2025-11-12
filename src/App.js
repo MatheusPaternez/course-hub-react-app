@@ -4,7 +4,6 @@ import LoginPopup from './pages/LoginPopup';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CourseSearch from './pages/CourseSearch';
-
 export default function App() {
     return (
         <>
@@ -16,7 +15,8 @@ export default function App() {
                     <Route element={<HomePage/>}/>
                     <Route element={<Header/>}/>
                     <Route index element={<LoginPopup />} />
-                    <Route path="course" element={<CourseSearch />} /> 
+                    <Route path="/:pageId/:categoryId?"  element={<CourseSearch />} /> 
+                    {/* example <Route path="/:pageId"  element={<othercontent />} /> */}
                 </Route>
             </Routes>
         </BrowserRouter>
