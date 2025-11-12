@@ -3,8 +3,9 @@ import { FaGoogle, FaApple, FaFacebookF } from 'react-icons/fa';
 import { Mail, Lock, Eye } from 'lucide-react';
 import LoginBackground from "../assets/img/login-background.png";
 import Logo from "../assets/img/logo.png";
+import Login from '../components/Login';
 
-export default function Login() {
+export default function LoginPopup() {
     return (
         // Main container for both divs sharing the screen
         <div className="flex h-screen bg-white">
