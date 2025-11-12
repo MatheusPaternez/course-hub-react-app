@@ -4,6 +4,7 @@ import LoginPopup from './pages/LoginPopup';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CourseSearch from './pages/CourseSearch';
+import DashboardTeacher from './pages/DashboardTeacher';
 
 export default function App() {
     return (
@@ -17,6 +18,7 @@ export default function App() {
                     <Route element={<Header/>}/>
                     <Route index element={<LoginPopup />} />
                     <Route path="course" element={<CourseSearch />} /> 
+                    <Route path="dashboard-teacher" element={<DashboardTeacher />} /> 
                 </Route>
             </Routes>
         </BrowserRouter>
