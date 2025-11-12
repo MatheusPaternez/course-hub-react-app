@@ -17,8 +17,9 @@ export default function App() {
                     <Route element={<HomePage/>}/>
                     <Route element={<Header/>}/>
                     <Route index element={<LoginPopup />} />
-                    <Route path="course" element={<CourseSearch />} /> 
                     <Route path="dashboard-teacher" element={<DashboardTeacher />} /> 
+                    <Route path="/:pageId/:categoryId?"  element={<CourseSearch />} /> 
+                    {/* example <Route path="/:pageId"  element={<othercontent />} /> */}
                 </Route>
             </Routes>
         </BrowserRouter>
