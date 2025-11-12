@@ -8,10 +8,11 @@ import iconPy from './icons/Python';
 import iconCyber from './icons/Cyber';
 import iconUxui from './icons/Uxui';
 export default function Subvar() {
+    //get the pageId from the URL parameters
     const { pageId } = useParams();
     const categories = [];
 
-    // eslint-disable-next-line default-case
+    //Depending on the pageId, populate the categories array
     switch (pageId) {
         case 'course':
             categories.push({ id: 'html', name: 'HTML/CSS', icon: iconHtml });
@@ -29,6 +30,8 @@ export default function Subvar() {
             break;
         case 'team-up':
             categories.push({ id: 'achevements', name: 'Achevements', icon: iconJava });
+            break;
+        default:
             break;
     }
     return (
