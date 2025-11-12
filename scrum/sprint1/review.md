@@ -15,7 +15,7 @@
   - N/A
 
 ## Product Backlog Updates
-- New items:
+- New items: Teacher page, Administrator page, Login feature
 
 - Reprioritized items:
   - N/A
