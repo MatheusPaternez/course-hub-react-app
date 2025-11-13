@@ -167,7 +167,7 @@ export default function DashboardTeacher() {
                                     <li className="flex-1 text-center">Action</li>
                                 </ul>
                                 <hr className="w-full border-t border-gray-300" />
-                                {assignments.map((item, index) => (
+                                {assignments && assignments.map((item, index) => (
                                     <Assignment key={index} studentData={item} onGradeUpdate={handleGradeUpdate} />))}
                             </div>
                         </div>
