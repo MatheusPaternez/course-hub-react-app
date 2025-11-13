@@ -1,42 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import IconJSCourse from "../assets/img/js-course-icon.png";
-import IconPyCourse from "../assets/img/py-course-icon.png";
-import IconUxUiCourse from "../assets/img/uxui-course-icon.jpg";
+import useFetch from "../hooks/UseFetch";
 
 export default function CourseList() {
-    const [courses, setCourses] = useState([
-        {
-            id: 'c1',
-            author: 'Milad Torabi',
-            title: 'Java Script for Front Developer',
-            rating: 4.9,
-            hours: '64 hours',
-            level: 'Beginner',
-            image: IconJSCourse
-        },
-        {
-            id: 'c2',
-            author: 'Kenta Onzoshi',
-            title: 'Python for Engineer',
-            rating: 4.9,
-            hours: '64 hours',
-            level: 'Beginner',
-            image: IconPyCourse
-        },
-        {
-            id: 'c3',
-            author: 'Aiya Tosaphone',
-            title: 'Figma for UXUI Designer',
-            rating: 4.9,
-            hours: '64 hours',
-            level: 'Beginner',
-            image: IconUxUiCourse
-        },
-    ]);
+    const { data:courses, loading, error } = useFetch('/api/courses'); ;
+if (loading ) return <p className="max-w-10xl mx-auto px-6"> Loading ... </p> ;
+if (error ) return <p>Error: {error.message}</p> ;
     return (
         <section className="bg-gray-50 py-12" >
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-10xl mx-auto px-6">
                 {/* Heading */}
                 <div className="text-center mb-8">
                     <h2 className="text-2xl md:text-3xl text-gray-800">Recommended Courses</h2>

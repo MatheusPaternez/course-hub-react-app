@@ -14,10 +14,10 @@ export default function App() {
             <Routes>
                 <Route path='/'>
                     <Route element={<LoginPopup />} />
-                    <Route element={<HomePage/>}/>
+                    <Route index element={<HomePage/>}/>
                     <Route element={<Header/>}/>
-                    <Route index element={<LoginPopup />} />
-                    <Route path="dashboard-teacher" element={<DashboardTeacher />} /> 
+                    <Route  element={<LoginPopup />} />
+                    <Route path="/:pageId/:categoryId?" element={<DashboardTeacher />} /> 
                     <Route path="/:pageId/:categoryId?"  element={<CourseSearch />} /> 
                     {/* example <Route path="/:pageId"  element={<othercontent />} /> */}
                 </Route>
