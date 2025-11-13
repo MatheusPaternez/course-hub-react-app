@@ -11,6 +11,7 @@ export default function Subvar() {
     //get the pageId from the URL parameters
     const { pageId } = useParams();
     const categories = [];
+    console.log("Subvar pageId:", pageId);
 
     //Depending on the pageId, populate the categories array
     switch (pageId) {
@@ -19,9 +20,9 @@ export default function Subvar() {
             categories.push({ id: 'javascript', name: 'JavaScript', icon: iconJs });
             categories.push({ id: 'java', name: 'Java', icon: iconJava });
             categories.push({ id: 'python', name: 'Python', icon: iconPy });
-            categories.push({ id: 'hypen', name: 'hypen', icon: iconPy });
+            categories.push({ id: 'hypen', name: 'hypen', icon: null });
             categories.push({ id: 'cybersecurity', name: 'CyberSecurity', icon: iconCyber });
-            categories.push({ id: 'hypen', name: 'hypen', icon: iconPy });
+            categories.push({ id: 'hypen', name: 'hypen', icon: null });
             categories.push({ id: 'uxui', name: 'UX/UI', icon: iconUxui });
 
             break;
@@ -30,6 +31,11 @@ export default function Subvar() {
             break;
         case 'team-up':
             categories.push({ id: 'achevements', name: 'Achevements', icon: iconJava });
+            break;
+        case 'dashboard-teacher':
+            categories.push({ id: 'manage-courses', name: 'Manage Courses', icon: null });
+            categories.push({ id: 'manage-students', name: 'Manage Students', icon: null });
+            categories.push({ id: 'gradebook', name: 'Gradebook', icon: null });
             break;
         default:
             break;

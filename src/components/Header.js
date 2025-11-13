@@ -22,6 +22,8 @@ export default function Header() {
                     <Link to="/dashboard" className="hover:text-blue-500 transition">Dashboard</Link>
                     <Link to="/team-up" className="hover:text-blue-500 transition">Team-Up</Link>
                     <Link to="/my-work" className="hover:text-blue-500 transition">My Work</Link>
+                    {/*For teachers menu below */}
+                    <Link to="/dashboard-teacher" className="hover:text-blue-500 transition">Dashboard:Teacher</Link>
                 </nav>
 
                 {/* RIGHT: Actions / profile */}
