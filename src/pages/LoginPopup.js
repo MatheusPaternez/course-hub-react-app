@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaGoogle, FaApple, FaFacebookF } from 'react-icons/fa';
 import { Mail, Lock, Eye } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import LoginBackground from "../assets/img/login-background.png";
 import Logo from "../assets/img/logo.png";
 import Login from '../components/Login';
@@ -10,13 +11,29 @@ export default function LoginPopup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     // Handle form submit
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
+        setLoading(true);
 
-        console.log(email, password);
-        Login({})
+        try {
+            // Call component Login to get email and password
+            const data = await Login({ email, password });
+            // if success go homepage
+            navigate('/home');
+        } catch (err) {
+            const msg = err.message;
+            setError(msg);
+            console.error('Login error:', err);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -148,9 +165,13 @@ export default function LoginPopup() {
                                 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 
                                 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out"
                             >
-                                Login
+                                {/* When its loading, change the text to show its loading */}
+                                {loading ? 'Logging in...' : 'Login'}
                             </button>
                         </div>
+
+                        {/* Show error message */}
+                        {error && <p className="text-sm text-red-500">{error}</p>}
                     </form>
 
                     {/* or continue with */}
@@ -168,22 +189,19 @@ export default function LoginPopup() {
 
                         {/* Social Login Buttons */}
                         <div className="mt-6 flex justify-center space-x-6">
-                            {/* Google */}
                             <button className="text-3xl text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out" type="button">
                                 <FaGoogle />
                             </button>
-                            {/* Apple */}
                             <button className="text-3xl text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out" type="button">
                                 <FaApple />
                             </button>
-                            {/* Facebook */}
                             <button className="text-3xl text-blue-600 hover:text-blue-700 transition duration-150 ease-in-out" type="button">
                                 <FaFacebookF />
                             </button>
                         </div>
                     </div>
 
-                    {/* Sign Up */}
+                    {/* Sign up */}
                     <div className="mt-8 text-center">
                         <p className="text-sm text-gray-600">
                             Don't have an account?{' '}
