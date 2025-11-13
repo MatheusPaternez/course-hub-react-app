@@ -2,13 +2,18 @@ import Course1 from "../assets/img/Course1.png";
 import Course2 from "../assets/img/Course2.png";
 import Course3 from "../assets/img/Course3.png";
 import { FaStar } from 'react-icons/fa';
+import Subvar from "../components/Subvar";
+import { useParams } from 'react-router-dom';
 export default function CourseSearch() {
+    const { categoryId } = useParams();
+    console.log("Category ID:", categoryId);
     const courses = [{ courseId: '1', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course1.png', review: 4.5, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Beginer' }, { courseId: '2', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course2.png', review: 4.6, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Beginer' },{courseId:'3', CourseTitle:'Java Script for Front-End Developer', imgPath:'../assets/img/Course3.png', review:4.2, teacher:'Milad torabi', estimatedTime:64, difficulty:'Beginer'},{courseId:'4', CourseTitle:'Java Script for Front-End Developer', imgPath:'../assets/img/Course4.png', review:4.5, teacher:'Milad torabi', estimatedTime:64, difficulty:'Beginer'},{ courseId: '5', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course5.png', review: 4.5, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Intermediate' }, { courseId: '6', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course6.png', review: 4.7, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Expart' }];
     return (
         <>
-            <div className="w-screen h-full pl-16 pt-16 bg-[#001c27] grid grid-cols-[100px_1fr] h-screen">
+            <div className="w-screen h-full pl-8 pt-6 bg-[#001c27] grid grid-cols-[w-64_1fr] h-screen">
+                <Subvar />
                 {/*<Navbar />/* Navbar component */}
-                <div className="mt-12 ml-30 w-9/10 bg-white p-6 rounded-4xl col-start-2">
+                <div className="mt-4 ml-12 w-9/10 bg-white p-6 rounded-4xl col-start-2">
                     <div className="w-screen grid grid-cols-[4rem_1fr_1fr] items-center justify-between relative bg-white">
                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 col-start-1 row-span-2 mb-6">
                             <g clipPath="url(#clip0_67_68)">

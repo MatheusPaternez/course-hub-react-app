@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import CourseSearch from './pages/CourseSearch';
 import Login from './components/Login';
+import DashboardTeacher from './pages/DashboardTeacher';
 
 export default function App() {
     return (
@@ -15,7 +16,8 @@ export default function App() {
                     <Route path='/' element={<Header />}>
                         <Route path='home' element={<HomePage />} />
                         <Route path='auth' element={<Login />} />
-                        <Route path="course" element={<CourseSearch />} />
+                        <Route path="/:pageId/:categoryId?" element={<DashboardTeacher />} />
+                        <Route path="/:pageId/:categoryId?" element={<CourseSearch />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
