@@ -3,14 +3,13 @@
 @tailwind utilities;
 
 @layer components {
-  /* .btn-primaryという独自のクラスを定義 */
   .unGrade {
-    /* Tailwindのユーティリティを@applyで適用 */
+    /* ungrade class */
     @apply text-[#2D9CDB];
   }
 
    .graded {
-    /* Tailwindのユーティリティを@applyで適用 */
+    /* graded class */
     @apply text-[#FB285E];
   }
 
