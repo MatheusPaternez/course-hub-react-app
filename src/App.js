@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import CourseSearch from './pages/CourseSearch';
 import Login from './components/Login';
+import DashboardTeacher from './pages/DashboardTeacher';
 
 export default function App() {
     return (
