@@ -14,7 +14,7 @@ Use bullets; keep it brief. Repeat for each day of the sprint.
 ## Day 3
 - Tiana — Yesterday:  /Today: / Blockers:
 - Matheus — Yesterday:  /Today: / Blockers:
-- Kenta — Yesterday:  /Today: / Blockers:
+- Kenta — Yesterday:implements Sub navigation bar and test it, and starting teacher-dashboard page  /Today:Finish teacher-dashboard page and make dummy API to get data / Blockers: Usage of useEffect
 
 ## Day 4
 - Tiana — Yesterday:  /Today: / Blockers:
