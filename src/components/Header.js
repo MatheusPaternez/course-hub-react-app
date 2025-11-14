@@ -32,7 +32,6 @@ export default function Header() {
                     text-lg font-semibold transition duration-300 ease-in-out">Login</a>
                 </div>
             </div>
-            <Outlet/>
         </header>
         <Outlet />
         </>
