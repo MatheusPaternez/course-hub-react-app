@@ -16,7 +16,8 @@ export default function App() {
                     <Route path='/' element={<Header />}>
                         <Route path='home' element={<HomePage />} />
                         <Route path='auth' element={<Login />} />
-                        <Route path="course" element={<CourseSearch />} />
+                        <Route path="/:pageId/:categoryId?" element={<DashboardTeacher />} />
+                        <Route path="/:pageId/:categoryId?" element={<CourseSearch />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
