@@ -23,6 +23,7 @@ export default function Header() {
                     <Link to="/team-up" className="hover:text-blue-500 transition">Team-Up</Link>
                     {/*For teachers menu below */}
                     <Link to="/dashboard-teacher" className="hover:text-blue-500 transition">Dashboard:Teacher</Link>
+                    <Link to="/dashboard-admin" className="hover:text-blue-500 transition">Dashboard:Admin</Link>
                 </nav>
 
                 {/* RIGHT: Actions / profile */}

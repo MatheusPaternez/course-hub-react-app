@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import CourseSearch from './pages/CourseSearch';
 import Login from './components/Login';
 import DashboardTeacher from './pages/DashboardTeacher';
+import DashboardAdmin from './pages/DashboardAdmin';
 
 export default function App() {
     return (
@@ -18,6 +19,7 @@ export default function App() {
                         <Route path='auth' element={<Login />} />
                         <Route path="/:pageId/:categoryId?" element={<DashboardTeacher />} />
                         <Route path="/:pageId/:categoryId?" element={<CourseSearch />} />
+                        <Route path="/dashboard-admin" element={<DashboardAdmin />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
