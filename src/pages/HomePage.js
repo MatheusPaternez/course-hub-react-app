@@ -100,7 +100,7 @@ export default function HomePageHeader() {
                     </div>
                 </div>
             </section>
-            <CourseList />
+            <CourseList home="true"/>
             <section className="relative overflow-hidden mt-12">
                 {/* Decorative SVG grid */}
                 <div className="absolute inset-0 pointer-events-none">
