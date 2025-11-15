@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import CourseSearch from './pages/CourseSearch';
 import DashboardTeacher from './pages/DashboardTeacher';
+import DashboardStudent from './pages/DashboardStudent';
 
 export default function App() {
     return (
@@ -18,6 +19,7 @@ export default function App() {
                     <Route element={<Header/>}/>
                     <Route  element={<LoginPopup />} />
                     <Route path="/:pageId/:categoryId?" element={<DashboardTeacher />} /> 
+                    <Route path="/dashboard" element={<DashboardStudent />} /> 
                     <Route path="/:pageId/:categoryId?"  element={<CourseSearch />} /> 
                     {/* example <Route path="/:pageId"  element={<othercontent />} /> */}
                 </Route>
