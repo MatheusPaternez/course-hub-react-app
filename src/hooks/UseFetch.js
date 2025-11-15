@@ -3,7 +3,7 @@ import IconJSCourse from "../assets/img/js-course-icon.png";
 import IconPyCourse from "../assets/img/py-course-icon.png";
 import IconUxUiCourse from "../assets/img/uxui-course-icon.jpg";
 import IconHtmlCourse from "../assets/img/Course6.png";
-// import axios from "axios";
+
 export default function useFetch(url) {
 
   const [data, setData] = useState(null);
@@ -50,7 +50,7 @@ export default function useFetch(url) {
             {
               id: 'c3',
               author: 'Aiya Tosaphone',
-              category: 'Design',
+              category: 'Uxui',
               title: 'Figma for UXUI Designer',
               rating: 4.9,
               hours: '64 hours',

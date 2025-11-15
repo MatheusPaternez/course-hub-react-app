@@ -26,7 +26,7 @@ export default function CourseSearch() {
         );
     }, [courses,searchText]);
     // return the loading or error state
-    if (loading) return <p className="max-w-10xl mx-auto px-6"> Loading ... </p>;
+    if (loading) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl "> Loading ... </p>;
     if (error) return <p>Error: {error.message}</p>;
     return (
         <>

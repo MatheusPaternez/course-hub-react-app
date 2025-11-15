@@ -80,7 +80,7 @@ export default function DashboardTeacher() {
         }
     }, [work, assignments]);
 
-    if (loading || loadingCourse) return <p className="max-w-10xl mx-auto px-6"> Loading ... </p>;
+    if (loading || loadingCourse) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
     if (error || errorCourse) return <p>Error: {error.message}</p>;
     //update grade for save to local storage
     const handleGradeUpdate = (targetId, newGrade) => {
