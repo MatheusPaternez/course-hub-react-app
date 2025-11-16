@@ -3,19 +3,32 @@ import { createContext, useEffect, useState } from "react";
 export const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
-
     const [user, setUser] = useState();
+
+    // Predefined users (already registered)
+    const initialUsers = [
+        { name: "Matheus", email: "matheusgfpaternez2006@gmail.com", password: "student", role: "student" },
+        { name: "Tiana", email: "tiana@gmail.com", password: "teacher", role: "teacher" },
+        { name: "Kenta", email: "kenta@gmail.com", password: "admin", role: "admin" },
+    ];
 
     useEffect(() => {
         const userToken = localStorage.getItem("user_token");
-        const usersStorage = localStorage.getItem("users_db");
+        let usersStorage = localStorage.getItem("users_db");
+
+        // Seed the initial users into localStorage on first load if not present
+        if (!usersStorage) {
+            localStorage.setItem("users_db", JSON.stringify(initialUsers));
+            usersStorage = JSON.stringify(initialUsers);
+        }
 
         if (userToken && usersStorage) {
-            const hasUser = JSON.parse(usersStorage)?.filter(
+            const parsedUsers = JSON.parse(usersStorage);
+            const found = parsedUsers.filter(
                 (user) => user.email === JSON.parse(userToken).email
             );
 
-            if (hasUser) setUser(hasUser[0]);
+            if (found && found.length) setUser(found[0]);
         }
     }, []);
 
@@ -73,6 +86,6 @@ export function AuthProvider({ children }) {
             value={{ user, signed: !!user, signIn, signUp, signOut }}
         >
             {children}
-            </AuthContext.Provider>
+        </AuthContext.Provider>
     )
 };

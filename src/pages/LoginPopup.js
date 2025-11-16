@@ -4,7 +4,7 @@ import { Mail, Lock, Eye } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import LoginBackground from "../assets/img/login-background.png";
 import Logo from "../assets/img/logo.png";
-import Login from '../components/Login';
+import useAuth from '../hooks/useAuth';
 
 export default function LoginPopup() {
     // Controlled inputs for React form logic
@@ -15,6 +15,7 @@ export default function LoginPopup() {
     const [error, setError] = useState(null);
 
     const navigate = useNavigate();
+    const { signIn } = useAuth(); // get signIn from context
 
     // Handle form submit
     const handleSubmit = async (e) => {
@@ -23,13 +24,19 @@ export default function LoginPopup() {
         setLoading(true);
 
         try {
-            // Call component Login to get email and password
-            const data = await Login({ email, password });
-            // if success go homepage
-            navigate('/home');
+            // Call signIn from Auth context (returns undefined on success or string error)
+            const result = await signIn(email, password);
+
+            if (result) {
+                // signIn returned an error message
+                setError(result);
+            } else {
+                // successful login
+                navigate('/home');
+            }
         } catch (err) {
-            const msg = err.message;
-            setError(msg);
+            // Unexpected error
+            setError('An error occurred');
             console.error('Login error:', err);
         } finally {
             setLoading(false);
