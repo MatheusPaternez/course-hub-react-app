@@ -1,11 +1,21 @@
+import React, { useEffect, useState } from 'react';
 import homepageBanner from '../assets/img/homepage-banner.jpg';
 import CourseList from '../components/CourseList';
 
 export default function HomePageHeader() {
+    // simple mounted flag to trigger a small entrance animation
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        // Timeout to the animation run
+        const t = setTimeout(() => setMounted(true), 20); // tiny delay so transition runs
+        return () => clearTimeout(t);
+    }, []);
+
     return (
         <main>
             <div
-                className="relative min-h-[80vh] flex items-center justify-center bg-cover bg-center text-white text-center px-4 py-20"
+                className={`relative min-h-[80vh] flex items-center justify-center bg-cover bg-center text-white text-center px-4 py-20 transform transition-all duration-500 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{
                     backgroundImage: `linear-gradient(rgba(34, 58, 67,0.9), rgba(34, 58, 67,0.9)),url(${homepageBanner})`
                 }}>
