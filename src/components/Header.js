@@ -12,7 +12,7 @@ export default function Header() {
                 <div className="flex items-center gap-3">
                     <img src={Logo} alt='Logo' />
                     {/* Brand name */}
-                    <span className="text-lg md:text-xl text-blue-400">Sync-Hub</span>
+                    
                 </div>
 
                 {/* CENTER: Primary navigation */}

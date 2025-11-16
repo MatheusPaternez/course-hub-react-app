@@ -1,5 +1,5 @@
 import Subvar from "../components/Subvar";
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import CourseListSearch from "../components/CourseListSearch";
 import UseFetch from "../hooks/UseFetch";
 import { useState, useMemo } from "react";
@@ -9,6 +9,8 @@ export default function CourseDetail() {
 
     // 1. useLocation
     const location = useLocation();
+
+    const navigate = useNavigate()
 
     // 2. location.state
     const { title, author, image, hours, level } = location.state || {};
@@ -25,6 +27,15 @@ export default function CourseDetail() {
         return courses.find(item => String(item.id) === String(courseId)
         );
     }, [courses, courseId]);
+
+    const handleEnrollClick = () => {
+        // define navigate
+        navigate(`/courses/section/${courseDetail.id}/`, {
+            state: {
+               ...courseDetail, title, author, image, hours, level
+            }
+        });
+    };
 
     if (loading) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
     if (error) return <p>Error: {error.message}</p>;
@@ -80,7 +91,7 @@ export default function CourseDetail() {
                                 </ul>
                             </div>
                             <div className="w-full flex items-center justify-center py-12">
-                                <button className="w-3/4 text-white text-lg px-6 py-3 rounded-lg mt-8 bg-blue-600 hover:bg-blue-700 transition duration-300 font-semibold shadow-md justify-center">
+                                <button className="w-3/4 text-white text-lg px-6 py-3 rounded-lg mt-8 bg-blue-600 hover:bg-blue-700 transition duration-300 font-semibold shadow-md justify-center" onClick={() => handleEnrollClick()}>
                                     Enroll In Course &#8594;
                                 </button>
                             </div>
