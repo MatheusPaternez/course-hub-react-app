@@ -18,7 +18,7 @@ export default function Header() {
                 {/* CENTER: Primary navigation */}
                 <nav className="hidden md:flex gap-6 text-sm text-gray-200" aria-label="Primary">
                     <Link to="/" className="hover:text-blue-500 transition">Home</Link>
-                    <Link to="/course" className="hover:text-blue-500 transition">Course</Link>
+                    <Link to="/courses" className="hover:text-blue-500 transition">Courses</Link>
                     <Link to="/dashboard" className="hover:text-blue-500 transition">Dashboard</Link>
                     <Link to="/team-up" className="hover:text-blue-500 transition">Team-Up</Link>
                     {/*For teachers menu below */}
@@ -28,19 +28,8 @@ export default function Header() {
                 {/* RIGHT: Actions / profile */}
                 <div className="flex items-center gap-3">
                     {/* Login link */}
-                    <a href="#" className="text-sm text-gray-200 hover:text-white">Login</a>
-
-                    {/* Sign up button */}
-                    <a href="#" className="hidden sm:inline-flex items-center px-3 py-1.5 bg-blue-500 hover:bg-blue-600 
-                    text-white text-sm rounded-md transition">Sign up</a>
-
-                    {/* Settings / icon placeholder */}
-                    <button
-                        aria-label="Settings"
-                        className="p-2 rounded-full bg-white/6 hover:bg-white/12 transition"
-                    >
-                        <img src={Settings} className='w-5' />
-                    </button>
+                    <a href="#" className="text-sm text-gray-200 p-2 rounded-lg hover:text-white bg-blue-600 hover:bg-blue-700 
+                    text-lg font-semibold transition duration-300 ease-in-out">Login</a>
                 </div>
             </div>
         </header>
