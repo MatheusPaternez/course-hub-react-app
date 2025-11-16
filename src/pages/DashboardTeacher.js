@@ -1,9 +1,9 @@
 import UserIcon from "../assets/img/user-icon.png";
 import Subvar from "../components/Subvar";
-import CourseList from "../components/CourseList";
+import CourseListSearch from "../components/CourseListSearch";
 import UseFetch from "../hooks/UseFetch";
 import Assignment from "../components/Assignment";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 function renderCalendar(year, month) {
     const gridContainer = document.getElementById('calendar-grid');
@@ -49,27 +49,39 @@ function renderCalendar(year, month) {
     }
 }
 export default function DashboardTeacher() {
+    //load assignment data from local storage or fetch
     const savedData = localStorage.getItem('assignments');
     const initialData = savedData ? JSON.parse(savedData) : null;
 
     const [assignments, setAssignments] = useState(initialData);
     // const shouldFetch = assignments === null;
     const fetchUrl = assignments === null ? '/api/mywork' : null;
+    //fetch assignment data
     const { data: work, loading, error } = UseFetch(fetchUrl);
-    console.log("Fetched work data:", assignments);
-    console.log('Is students an Array?', Array.isArray(assignments));
-    console.log('Number of items:', assignments ? assignments.length : 'N/A');
+    //fetch course data that does matter for this account
+    const { data: courses, loadingCourse, errorCourse } = UseFetch('/api/courses');
+
+    // useMemo for filtering assignments for a specific student
+    const filteredAssignments = useMemo(() => {
+        if (!courses) {
+            return []; // return empty array if courses data is not available
+        }
+        // execute filtering
+        return courses.filter(item =>
+            item.author.includes('Kenta') // test filter condition it should be dynamic
+        );
+    }, [courses]);
+
     useEffect(() => {
         if (work && assignments == null) {
-            console.log("Setting assignments from fetched data:", work);
             setAssignments(work);
             localStorage.setItem('assignments', JSON.stringify(work));
 
         }
     }, [work, assignments]);
 
-    if (loading) return <p className="max-w-10xl mx-auto px-6"> Loading ... </p>;
-    if (error) return <p>Error: {error.message}</p>;
+    if (loading || loadingCourse) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
+    if (error || errorCourse) return <p>Error: {error.message}</p>;
     //update grade for save to local storage
     const handleGradeUpdate = (targetId, newGrade) => {
         const updatedAssignments = assignments.map(assignment => {
@@ -88,10 +100,10 @@ export default function DashboardTeacher() {
     setTimeout(() => renderCalendar(today.getFullYear(), today.getMonth()), 100);
     return (
         <main>
-            <div className="w-screen h-full pl-16 pt-4 bg-[#001c27] grid grid-cols-[100px_1fr]">
+            <div className="w-full h-auto pl-16 pt-4 bg-[#001c27] grid grid-cols-[100px_1fr]">
                 <Subvar />
-                <div className="mt-12 ml-30 w-9/10 bg-gray-50 p-6 rounded-4xl col-start-2">
-                    <div className="w-full items-center flex flex-row relative bg-white">
+                <div className="mt-12 ml-30 w-9/10 pr-12 bg-gray-50 p-6 rounded-4xl col-start-2">
+                    <div className="w-full items-center flex flex-row relative">
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-4 left-0">
                             <path d="M11 22V8.25H22V22M0 22V13.75H8.25V22M11 5.5V0H22V5.5M0 11V0H8.25V11" fill="#2D9CDB" />
                         </svg>
@@ -148,7 +160,7 @@ export default function DashboardTeacher() {
                         </div>
                         <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-bold">Course Management</p> <a href="#" className="text-[#2D9CDB]">Explore All Courses</a></div>
                         <div className="h-auto min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-span-3">
-                            <CourseList />
+                            <CourseListSearch items={filteredAssignments} />
                         </div>
                         <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-bold">Assignments & Grading</p> <select defaultValue="default" className="w-32 max-w-32 overflow-hidden text-ellipsis whitespace-nowrap bg-white px-4 py-2 rounded-lg border border-gray-300 text-gray-500 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="default" disabled hidden>Status　　&#8897;</option>

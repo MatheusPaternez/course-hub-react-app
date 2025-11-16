@@ -2,20 +2,18 @@ import React from "react";
 import { useState } from "react";
 import useFetch from "../hooks/UseFetch";
 
-export default function CourseList({home = false}) {
-    const { data:courses, loading, error } = useFetch('/api/courses'); ;
-if (loading ) return <p className="max-w-10xl mx-auto px-6"> Loading ... </p> ;
-if (error ) return <p>Error: {error.message}</p> ;
+export default function CourseList() {
+    const { data: courses, loading, error } = useFetch('/api/courses');
+    if (loading) return <p className="max-w-10xl mx-auto px-6"> Loading ... </p>;
+    if (error) return <p>Error: {error.message}</p>;
     return (
         <section className="bg-gray-50 py-12" >
             <div className="max-w-10xl mx-auto px-6">
                 {/* Heading */}
-                {home && (
-                    <div className="text-center mb-8">
-                        <h2 className="text-2xl md:text-3xl text-gray-800">Recommended Courses</h2>
-                        <p className="text-sm text-gray-500 mt-2">Boost your skills with courses built for real-world developers.</p>
-                    </div>
-                )}
+                <div className="text-center mb-8">
+                    <h2 className="text-2xl md:text-3xl text-gray-800">Recommended Courses</h2>
+                    <p className="text-sm text-gray-500 mt-2">Boost your skills with courses built for real-world developers.</p>
+                </div>
                 {/* Courses grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     {courses.map((course) => (
