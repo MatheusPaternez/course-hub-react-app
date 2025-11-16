@@ -6,28 +6,32 @@ import Footer from './components/Footer';
 import CourseSearch from './pages/CourseSearch';
 import Login from './components/Login';
 import DashboardTeacher from './pages/DashboardTeacher';
+import { AuthProvider } from './contexts/auth';
 
-const Private = ({ Compo }) =>{
+const Private = ({ Compo }) => {
     const signed = false;
 
-    return signed > 0 ? <Compo /> : <LoginPopup/>;
+    // Check if its logged, if true: show component, if false, go to login page
+    return signed > 0 ? <Compo /> : <LoginPopup />;
 }
 
 export default function App() {
     return (
         <>
-            <BrowserRouter>
-                <Routes>
-                    <Route index path='login' element={<LoginPopup />} />
-                    <Route path='/' element={<Header />}>
-                        <Route path='home' element={<Private Compo={HomePage} />} />
-                        <Route path='auth' element={<Login />} />
-                        <Route path="/:pageId/:categoryId?" element={<DashboardTeacher />} />
-                        <Route path="/:pageId/:categoryId?" element={<CourseSearch />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-            <Footer />
+            <AuthProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route index path='login' element={<LoginPopup />} />
+                        <Route path='/' element={<Header />}>
+                            <Route path='home' element={<Private Compo={HomePage} />} />
+                            <Route path='auth' element={<Login />} />
+                            <Route path="/:pageId/:categoryId?" element={<DashboardTeacher />} />
+                            <Route path="/:pageId/:categoryId?" element={<CourseSearch />} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+                <Footer />
+            </AuthProvider>
         </>
     )
 }
