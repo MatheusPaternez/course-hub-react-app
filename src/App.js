@@ -7,6 +7,7 @@ import CourseSearch from './pages/CourseSearch';
 import CourseDetail from './pages/CourseDetail';
 import Login from './components/Login';
 import DashboardTeacher from './pages/DashboardTeacher';
+import CoursePageSection from './components/CoursePageSection';
 import DashboardStudent from './pages/DashboardStudent';
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
                         <Route path="dashboard" element={<DashboardStudent />} />
                         <Route path="/courses/" element={<CourseSearch />} />
                         <Route path="/courses/:categoryId/:courseId" element={<CourseDetail />} />
+                        <Route path='/courses/section/:courseId' element={<CoursePageSection />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

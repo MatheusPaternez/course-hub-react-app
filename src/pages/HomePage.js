@@ -122,18 +122,15 @@ export default function HomePageHeader() {
                 </div>
 
                 {/* Content container */}
-                <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 text-center">
-                    {/* Text */}
+                {/* <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 text-center">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
                         Join a community where developers grow together.
                     </h2>
 
-                    {/* Subtext */}
                     <p className="mt-4 text-sm sm:text-base text-white/90 max-w-2xl mx-auto">
                         Learn, collaborate, and build your future with Sync-Hub — where teamwork sparks real growth.
                     </p>
 
-                    {/* Register Button */}
                     <div className="mt-8">
                         <a
                             href="#"
@@ -145,7 +142,7 @@ export default function HomePageHeader() {
                             </svg>
                         </a>
                     </div>
-                </div>
+                </div> */}
             </section>
         </main>
     );
