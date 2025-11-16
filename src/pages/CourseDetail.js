@@ -91,7 +91,7 @@ export default function CourseDetail() {
                                 </ul>
                             </div>
                             <div className="w-full flex items-center justify-center py-12">
-                                <button className="w-3/4 text-white text-lg px-6 py-3 rounded-lg mt-8 bg-blue-600 hover:bg-blue-700 transition duration-300 font-semibold shadow-md justify-center" onClick={() => handleEnrollClick(handleEnrollClick)}>
+                                <button className="w-3/4 text-white text-lg px-6 py-3 rounded-lg mt-8 bg-blue-600 hover:bg-blue-700 transition duration-300 font-semibold shadow-md justify-center" onClick={() => handleEnrollClick()}>
                                     Enroll In Course &#8594;
                                 </button>
                             </div>
