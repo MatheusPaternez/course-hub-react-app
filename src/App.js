@@ -10,6 +10,7 @@ import DashboardTeacher from './pages/DashboardTeacher';
 import DashboardAdmin from './pages/DashboardAdmin';
 import CoursePageSection from './components/CoursePageSection';
 import DashboardStudent from './pages/DashboardStudent';
+import ContentManagement from './pages/ContentManagement';
 
 export default function App() {
     return (
@@ -28,6 +29,7 @@ export default function App() {
                         <Route path="/courses/" element={<CourseSearch />} />
                         <Route path="/courses/:categoryId/:courseId" element={<CourseDetail />} />
                         <Route path='/courses/section/:courseId' element={<CoursePageSection />} />
+                        <Route path="/content" element={<ContentManagement />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
