@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
 
             if (hasUser) setUser(hasUser[0]);
         }
-    })
+    },[])
 
     return <AuthContext.Provider>{children}</AuthContext.Provider>
 };
