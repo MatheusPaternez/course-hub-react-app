@@ -8,17 +8,20 @@ import CourseDetail from './pages/CourseDetail';
 import Login from './components/Login';
 import DashboardTeacher from './pages/DashboardTeacher';
 import CoursePageSection from './components/CoursePageSection';
+import DashboardStudent from './pages/DashboardStudent';
 
 export default function App() {
     return (
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route index path='login' element={<LoginPopup />} />
+                    <Route path='login' element={<LoginPopup />} />
                     <Route path='/' element={<Header />}>
                         <Route path='home' element={<HomePage />} />
+                        <Route index element={<HomePage />} />
                         <Route path='auth' element={<Login />} />
                         <Route path="/:pageId/:categoryId?" element={<DashboardTeacher />} />
+                        <Route path="dashboard" element={<DashboardStudent />} />
                         <Route path="/courses/" element={<CourseSearch />} />
                         <Route path="/courses/:categoryId/:courseId" element={<CourseDetail />} />
                         <Route path='/courses/section/:courseId' element={<CoursePageSection />} />
