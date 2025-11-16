@@ -7,6 +7,12 @@ import CourseSearch from './pages/CourseSearch';
 import Login from './components/Login';
 import DashboardTeacher from './pages/DashboardTeacher';
 
+const Private = ({ Compo }) =>{
+    const signed = false;
+
+    return signed > 0 ? <Compo /> : <LoginPopup/>;
+}
+
 export default function App() {
     return (
         <>
@@ -14,7 +20,7 @@ export default function App() {
                 <Routes>
                     <Route index path='login' element={<LoginPopup />} />
                     <Route path='/' element={<Header />}>
-                        <Route path='home' element={<HomePage />} />
+                        <Route path='home' element={<Private Compo={HomePage} />} />
                         <Route path='auth' element={<Login />} />
                         <Route path="/:pageId/:categoryId?" element={<DashboardTeacher />} />
                         <Route path="/:pageId/:categoryId?" element={<CourseSearch />} />
