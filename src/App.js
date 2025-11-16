@@ -21,6 +21,7 @@ export default function App() {
                         <Route path="/:pageId/:categoryId?" element={<DashboardTeacher />} />
                         <Route path="/courses/" element={<CourseSearch />} />
                         <Route path="/courses/:categoryId/:courseId" element={<CourseDetail />} />
+                        <Route path='/courses/section/:courseId' element={<CoursePageSection />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
