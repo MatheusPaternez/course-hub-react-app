@@ -51,29 +51,40 @@ function renderCalendar(year, month) {
 export default function DashboardAdmin() {
     //load assignment data from local storage or fetch
     const savedCourseData = localStorage.getItem('courses');
-    const courses = !savedCourseData  ? savedCourseData :[{ courseId: '1', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course1.png', review: 4.5, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Beginer' }, { courseId: '2', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course2.png', review: 4.6, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Beginer' },{courseId:'3', CourseTitle:'Java Script for Front-End Developer', imgPath:'../assets/img/Course3.png', review:4.2, teacher:'Milad torabi', estimatedTime:64, difficulty:'Beginer'},{courseId:'4', CourseTitle:'Java Script for Front-End Developer', imgPath:'../assets/img/Course4.png', review:4.5, teacher:'Milad torabi', estimatedTime:64, difficulty:'Beginer'},{ courseId: '5', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course5.png', review: 4.5, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Intermediate' }, { courseId: '6', CourseTitle: 'Java Script for Front-End Developer', imgPath: '../assets/img/Course6.png', review: 4.7, teacher: 'Milad torabi', estimatedTime: 64, difficulty: 'Expart' }];
+    const initialData = savedCourseData ? JSON.parse(savedCourseData) : null;
+    const [courses, setCourses] = useState(initialData);
+    //for overflow
+    const [isExpanded, setIsExpanded] = useState(false);
 
+    const toggleExpand = () => {
+        
+        setIsExpanded(!isExpanded);
+    };
 
-    // useEffect(() => {
-    //     if (savedCourseData) {
-    //         localStorage.setItem('courses', JSON.stringify(courses));
+    const containerClasses = `h-90 min-w-full w-max flex-shrink-0 overflow-x-hidden col-span-3 
+    ${
+      isExpanded 
+        ? 'h-auto overflow-y-visible' //delete over-flow
+        : 'h-90 overflow-y-scroll'    //normal display
+    }
+  `;
 
-    //     }
-    // }, [work, assignments]);
+    const fetchUrl = courses === null ? '/api/courses' : null;
 
-    // if (loading || loadingCourse) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
-    // if (error || errorCourse) return <p>Error: {error.message}</p>;
-    //update grade for save to local storage
-    // const handleGradeUpdate = (targetId, newGrade) => {
-    //     const updatedAssignments = assignments.map(assignment => {
-    //         if (assignment.courseId === targetId) {
-    //             return { ...assignment, grade: newGrade, status: 'Graded' };
-    //         }
-    //         return assignment;
-    //     });
-    //     setAssignments(updatedAssignments);
-    //     localStorage.setItem('assignments', JSON.stringify(updatedAssignments));
-    // };
+    //fetch assignment data
+    const { data: work, loading, error } = UseFetch(fetchUrl);
+
+    useEffect(() => {
+        if (work && initialData == null) {
+            setCourses(work);
+            localStorage.setItem('courses', JSON.stringify(work));
+
+        }
+    }, [work, courses]);
+
+    if (loading) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
+    if (error) return <p>Error: {error.message}</p>;
+
 
     //for render calendar
     const today = new Date();
@@ -83,7 +94,7 @@ export default function DashboardAdmin() {
         <main>
             <div className="w-full h-auto pl-16 pt-4 bg-[#001c27] grid grid-cols-[100px_1fr]">
                 <Subvar />
-                <div className="mt-12 ml-30 w-full pr-12 bg-gray-50 p-6 rounded-4xl col-start-2">
+                <div className="mt-12 ml-30 w-9/10 pr-12 bg-gray-50 p-6 rounded-4xl col-start-2">
                     <div className="w-full items-center flex flex-row relative">
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-4 left-0">
                             <path d="M11 22V8.25H22V22M0 22V13.75H8.25V22M11 5.5V0H22V5.5M0 11V0H8.25V11" fill="#2D9CDB" />
@@ -139,9 +150,19 @@ export default function DashboardAdmin() {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-bold">Course Management</p> <a href="#" className="text-[#2D9CDB]">Show all</a></div>
-                        <div className="h-auto min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-span-3">
+                        <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-bold">Course Management</p> <div onClick={toggleExpand} className="text-[#2D9CDB] cursor-pointer hover:underline hover:text-blue-800 transition duration-150">Show all</div></div>
+                        <div className={containerClasses}>
                             {/* <CourseListSearch items={filteredAssignments} /> */}
+                            {courses && courses.map((item, index) => (<CourseListDetail key={index} courseData={item} />))}
+
+                        </div>
+                        <div className="flex flex-row items-center col-start-2 justify-center">
+                            <div className="flex flex-row w-full text-[#2D9CDB] text-2xl items-center cursor-pointer space-x-2 hover:underline hover:text-blue-800 transition duration-150">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.99984 1.66663C5.39734 1.66663 1.6665 5.39746 1.6665 9.99996C1.6665 14.6025 5.39734 18.3333 9.99984 18.3333C14.6023 18.3333 18.3332 14.6025 18.3332 9.99996C18.3332 5.39746 14.6023 1.66663 9.99984 1.66663ZM14.1665 10.8333H10.8332V14.1666H9.1665V10.8333H5.83317V9.16663H9.1665V5.83329H10.8332V9.16663H14.1665V10.8333Z" fill="#2D9CDB" />
+                                </svg>
+                                <p>Add Course</p>
+                            </div>
                         </div>
                     </div>
                 </div>

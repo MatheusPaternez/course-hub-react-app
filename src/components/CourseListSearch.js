@@ -5,7 +5,7 @@ export default function CourseListSearch({ items }) {
     const navigate = useNavigate();
 
     const handleCardClick = (target) => {
-        // 2. navigate 関数を呼び出し、URLパスと同時に state オブジェクトを渡す
+        // use navigate to pass the parameter
         navigate(`/courses/${target.category}/${target.id}`, {
             state: {
                ...target
