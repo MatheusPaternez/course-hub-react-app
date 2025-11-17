@@ -15,7 +15,7 @@ export default function Subvar() {
 
     //Depending on the pageId, populate the categories array
     switch (pageId) {
-        case 'course':
+        case 'courses':
             categories.push({ id: 'html', name: 'HTML/CSS', icon: iconHtml });
             categories.push({ id: 'javascript', name: 'JavaScript', icon: iconJs });
             categories.push({ id: 'java', name: 'Java', icon: iconJava });
@@ -42,7 +42,7 @@ export default function Subvar() {
     }
     return (
         <>
-            <aside className="w-64 bg-[#001c27] text-gray-200 min-h-screen p-4">
+            <aside className="w-full h-screen text-white flex flex-col gap-6 py-10 mt-20">
 
                 {/* sub navigation */}
                 <nav className="hidden md:flex gap-6 text-md text-gray-200 flex flex-col px-6" aria-label="Sub Navigation">
@@ -54,7 +54,7 @@ export default function Subvar() {
                         ) : (
                             <Link
                                 key={category.id}
-                                to={`/course/${category.id}`}
+                                to={`/courses/${category.id}`}
                                 className="flex items-center hover:text-blue-500 transition"
                             >
                                 {IconComponent && <IconComponent className="h-5 w-5 mr-2" />}
@@ -64,7 +64,7 @@ export default function Subvar() {
                     })}
                 </nav>
             </aside >
-            <Outlet />
+
         </>
     );
 }

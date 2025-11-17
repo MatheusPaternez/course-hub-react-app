@@ -1,9 +1,66 @@
 import UserIcon from "../assets/img/user-icon.png";
-import Subvar from "../components/Subvar";
+// import Subvar from "../components/Subvar";
 import CourseListSearch from "../components/CourseListSearch";
 import UseFetch from "../hooks/UseFetch";
 import Assignment from "../components/Assignment";
 import { useState, useEffect, useMemo } from "react";
+import Header from "../components/Header";
+
+// Side bar - unselected
+import Dashboard from "../assets/img/Dashboard.png";
+import MyProfile from "../assets/img/MyProfile.png";
+import MyCourse from "../assets/img/MyCourse.png";
+import MyWork from "../assets/img/MyWork.png";
+import Event from "../assets/img/Event.png";
+
+// Side bar - selected
+import SDashboard from "../assets/img/Select-Dashboard.png";
+import SMyProfile from "../assets/img/Select-MyProfile.png";
+import SMyCourse from "../assets/img/Select-MyCourse.png";
+import SMyWork from "../assets/img/Select-MyWork.png";
+import SEvents from "../assets/img/Select-Events.png";
+
+function Subvar() {
+    const [active, setActive] = useState("dashboard");
+
+    const menu = [
+        { key: "dashboard", label: "Dashboard", icon: Dashboard, activeIcon: SDashboard },
+        { key: "profile", label: "My Profile", icon: MyProfile, activeIcon: SMyProfile },
+        { key: "course", label: "My Course", icon: MyCourse, activeIcon: SMyCourse },
+        { key: "work", label: "My Work", icon: MyWork, activeIcon: SMyWork },
+        { key: "events", label: "Events", icon: Event, activeIcon: SEvents },
+    ];
+
+    return (
+        <div className="w-full h-screen text-white flex flex-col gap-6 py-10 mt-20">
+            {menu.map((item) => (
+                <button
+                    key={item.key}
+                    onClick={() => setActive(item.key)}
+                    className={`flex items-center gap-4 pl-6 py-3 transition-all
+                    `}
+                >
+                    <img
+                    src={active === item.key ? item.activeIcon : item.icon}
+                    className={`${active === item.key ? "w-9 h-9" : "w-6 h-6"}`}
+                    />
+                    <span
+                    className={`
+                        font-medium
+                        ${active === item.key 
+                        ? "text-[#2D9CDB] text-base"   // select
+                        : "text-white text-sm"         // unselect
+                        }
+                        break-words   
+                    `}
+                    >
+                    {item.label}
+                    </span>
+                </button>
+            ))}
+        </div>
+    );
+}
 
 function renderCalendar(year, month) {
     const gridContainer = document.getElementById('calendar-grid');
@@ -99,8 +156,10 @@ export default function DashboardTeacher() {
 
     setTimeout(() => renderCalendar(today.getFullYear(), today.getMonth()), 100);
     return (
+        <>
+        <Header/>
         <main>
-            <div className="w-full h-auto pl-16 pt-4 bg-[#001c27] grid grid-cols-[100px_1fr]">
+            <div className="w-full h-auto pl-16 pt-4 bg-[#001c27] grid grid-cols-[250px_1fr]">
                 <Subvar />
                 <div className="mt-12 ml-30 w-9/10 pr-12 bg-gray-50 p-6 rounded-4xl col-start-2">
                     <div className="w-full items-center flex flex-row relative">
@@ -187,5 +246,6 @@ export default function DashboardTeacher() {
                 </div>
             </div>
         </main>
+        </>
     );
 }

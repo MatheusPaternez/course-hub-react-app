@@ -20,7 +20,6 @@ export default function Header() {
                     <Link to="/" className="hover:text-blue-500 transition">Home</Link>
                     <Link to="/courses" className="hover:text-blue-500 transition">Courses</Link>
                     <Link to="/dashboard" className="hover:text-blue-500 transition">Dashboard</Link>
-                    <Link to="/team-up" className="hover:text-blue-500 transition">Team-Up</Link>
                     {/*For teachers menu below */}
                     <Link to="/dashboard-teacher" className="hover:text-blue-500 transition">Dashboard:Teacher</Link>
                 </nav>
@@ -33,7 +32,6 @@ export default function Header() {
                 </div>
             </div>
         </header>
-        <Outlet />
         </>
 
     );

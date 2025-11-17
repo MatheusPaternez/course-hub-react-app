@@ -37,12 +37,12 @@ export default function CourseDetail() {
         });
     };
 
-    if (loading) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
+    if (loading) return  <div className="w-full h-auto pr-12 min-w-[60rem] bg-[#001c27] p-6 col-start-2"><p className=" w-full mx-auto px-6 center-text text-gray-400 text-xl bg-[#001c27]"> Loading ... </p></div>;
     if (error) return <p>Error: {error.message}</p>;
 
     return (
         <>
-            <div className="w-full h-auto pl-8 pt-6 bg-[#001c27] grid grid-cols-[1fr_7fr] overflow-x-hidden ">
+            <div className="w-full h-auto pl-8 pt-6 bg-[#001c27] grid grid-cols-[250px_7fr] overflow-x-hidden ">
                 <Subvar />
                 {/*<Navbar />/* Navbar component */}
                 <div className="mt-4 ml-12 w-full pr-12 min-w-[70rem] bg-gray-50 p-6 rounded-4xl col-start-2">

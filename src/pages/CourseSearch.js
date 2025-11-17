@@ -26,13 +26,13 @@ export default function CourseSearch() {
         );
     }, [courses,searchText]);
     // return the loading or error state
-    if (loading) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl "> Loading ... </p>;
+    if (loading) return <div className="w-full h-auto pr-12 min-w-[60rem] bg-[#001c27] p-6 col-start-2"><p className=" w-full mx-auto px-6 center-text text-gray-400 text-xl bg-[#001c27]"> Loading ... </p></div>;
     if (error) return <p>Error: {error.message}</p>;
     return (
         <>
-            <div className="w-full h-auto pl-8 pt-6 bg-[#001c27] grid grid-cols-[1fr_7fr] overflow-x-hidden ">
-                <Subvar />
+            <div className="w-full h-auto pl-8 pt-6 bg-[#001c27] grid grid-cols-[250px_7fr] overflow-x-hidden ">
                 {/*<Navbar />/* Navbar component */}
+                <Subvar />
                 <div className="mt-4 ml-12 w-full h-auto pr-12 min-w-[60rem] bg-gray-50 p-6 rounded-4xl col-start-2">
                     <div className="w-full grid grid-cols-[4rem_1fr_1fr] items-center justify-between relative bg-gray-50">
                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 col-start-1 row-span-2 mb-6">
