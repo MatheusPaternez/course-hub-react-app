@@ -4,6 +4,7 @@ export const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState();
+    const [loading, setLoading] = useState(true);
 
     // Predefined users (already registered)
     const initialUsers = [
@@ -30,6 +31,8 @@ export function AuthProvider({ children }) {
 
             if (found && found.length) setUser(found[0]);
         }
+
+        setLoading(false);
     }, []);
 
     const signIn = (email, password) => {
@@ -43,7 +46,7 @@ export function AuthProvider({ children }) {
                 // Token for control
                 const token = Math.random().toString(36).substring(2);
                 localStorage.setItem("user_token", JSON.stringify({ email, token }));
-                setUser({ email, password });
+                setUser(hasUser[0]); // Set user with full data
                 return;
             } else {
                 return "Email or Password Invalid";
@@ -83,7 +86,7 @@ export function AuthProvider({ children }) {
 
     return (
         <AuthContext.Provider
-            value={{ user, signed: !!user, signIn, signUp, signOut }}
+            value={{ user, signed: !!user, signIn, signUp, signOut}}
         >
             {children}
         </AuthContext.Provider>
