@@ -81,7 +81,7 @@ export default function Header() {
 
                                 {/* Dropdown menu */}
                                 {showUserMenu && (
-                                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50">
+                                    <div className="absolute right-0 mt-2 w-60 bg-white rounded-lg shadow-lg z-50">
                                         <div className="px-4 py-3 border-b">
                                             <p className="text-sm font-medium text-gray-800">{user.name}</p>
                                             <p className="text-xs text-gray-500">{user.email}</p>
@@ -90,7 +90,7 @@ export default function Header() {
 
                                         <button
                                             onClick={handleLogout}
-                                            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition"
+                                            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 hover:rounded-full rounded-full transition"
                                         >
                                             <LogOut className="w-4 h-4" />
                                             Logout

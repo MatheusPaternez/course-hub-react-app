@@ -4,7 +4,7 @@ export const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState();
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
     // Predefined users (already registered)
     const initialUsers = [
@@ -32,7 +32,6 @@ export function AuthProvider({ children }) {
             if (found && found.length) setUser(found[0]);
         }
 
-        setLoading(false);
     }, []);
 
     const signIn = (email, password) => {
