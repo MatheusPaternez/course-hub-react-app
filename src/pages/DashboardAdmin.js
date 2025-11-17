@@ -26,7 +26,7 @@ function renderCalendar(year, month) {
     for (let i = 0; i < startDayOfWeek; i++) {
         const emptyCell = document.createElement('div');
         emptyCell.className = 'p-2 text-center text-gray-400';
-        emptyCell.textContent = ''; // または前月の日付
+        emptyCell.textContent = ''; 
         gridContainer.appendChild(emptyCell);
     }
 
