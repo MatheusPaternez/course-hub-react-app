@@ -1,13 +1,14 @@
 import Subvar from "../components/Subvar";
 import CourseListSearch from "../components/CourseListSearch";
-import UseFetch from "../hooks/UseFetch";
-import { useState, useMemo } from "react";
-import { useNavigate } from 'react-router-dom';
+import {useFetch} from "../hooks/UseFetch";
+import { useState, useMemo, useContext } from "react";
+import { CourseHandlersContext } from '../components/CourseHandlersContext';
+
 export default function CourseSearch() {
     // const { categoryId } = useParams();
 
     const [searchText, setSearchText] = useState('');
-    const { data: courses, loading, error } = UseFetch('/api/courses');
+    const { courses } = useContext(CourseHandlersContext);
     
     // handle search input change
     const handleSearchChange = (event) => {
@@ -26,8 +27,6 @@ export default function CourseSearch() {
         );
     }, [courses,searchText]);
     // return the loading or error state
-    if (loading) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl "> Loading ... </p>;
-    if (error) return <p>Error: {error.message}</p>;
     return (
         <>
             <div className="w-full h-auto pl-8 pt-6 bg-[#001c27] grid grid-cols-[1fr_7fr] overflow-x-hidden ">

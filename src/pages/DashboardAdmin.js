@@ -1,14 +1,16 @@
 import UserIcon from "../assets/img/user-icon.png";
 import Subvar from "../components/Subvar";
 
-import UseFetch from "../hooks/UseFetch";
 import CourseListDetail from "../components/CourseListDetail";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useContext } from "react";
+import { CourseHandlersContext } from '../components/CourseHandlersContext';
+import { useNavigate } from 'react-router-dom';
 
 function renderCalendar(year, month) {
     const gridContainer = document.getElementById('calendar-grid');
     if (!gridContainer) return; // find container
 
+    
     gridContainer.innerHTML = ''; // clear carendar
 
     // first day of month
@@ -49,47 +51,52 @@ function renderCalendar(year, month) {
     }
 }
 export default function DashboardAdmin() {
-    //load assignment data from local storage or fetch
-    const savedCourseData = localStorage.getItem('courses');
-    const initialData = savedCourseData ? JSON.parse(savedCourseData) : null;
-    const [courses, setCourses] = useState(initialData);
-    //for overflow
+ 
+    //for render calendar
+    const today = new Date();
+
+           //for date
+    const [date, setDate] = useState({ year: today.getFullYear(), month: today.getMonth() });
+
+    setTimeout(() => renderCalendar(date.year, date.month), 100);
+
+
+    //get data from context
+    const { courses, isLoading, handleDeleteCourse } = useContext(CourseHandlersContext);
+ 
+    // navigate define
+    const navigate = useNavigate()
+
+    const handlerClick = (mode, courseId = "") => {
+        if (mode === "edit" || mode === "add") {
+            // define navigate
+            navigate(`/content/${mode}${courseId ? "/" + courseId : ""}`, {
+            });
+        }else if(mode === "delete"){
+            handleDeleteCourse(courseId);
+        }
+
+    };
+
+
+    //for overflow toggle
     const [isExpanded, setIsExpanded] = useState(false);
 
     const toggleExpand = () => {
-        
         setIsExpanded(!isExpanded);
     };
 
     const containerClasses = `h-90 min-w-full w-max flex-shrink-0 overflow-x-hidden col-span-3 
-    ${
-      isExpanded 
-        ? 'h-auto overflow-y-visible' //delete over-flow
-        : 'h-90 overflow-y-scroll'    //normal display
-    }
+    ${isExpanded
+            ? 'h-auto overflow-y-visible' //delete over-flow
+            : 'h-90 overflow-y-scroll'    //normal display
+        }
   `;
 
-    const fetchUrl = courses === null ? '/api/courses' : null;
-
-    //fetch assignment data
-    const { data: work, loading, error } = UseFetch(fetchUrl);
-
-    useEffect(() => {
-        if (work && initialData == null) {
-            setCourses(work);
-            localStorage.setItem('courses', JSON.stringify(work));
-
-        }
-    }, [work, courses]);
-
-    if (loading) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
-    if (error) return <p>Error: {error.message}</p>;
+    if (isLoading) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
+    // if (error) return <p>Error: {error.message}</p>;
 
 
-    //for render calendar
-    const today = new Date();
-
-    setTimeout(() => renderCalendar(today.getFullYear(), today.getMonth()), 100);
     return (
         <main>
             <div className="w-full h-auto pl-16 pt-4 bg-[#001c27] grid grid-cols-[100px_1fr]">
@@ -133,7 +140,7 @@ export default function DashboardAdmin() {
                                     <h2 className="text-lg font-semibold">
                                         Nov. 2025
                                     </h2>
-                                    <button className="text-xl font-bold p-2 hover:bg-blue-500 rounded-full">
+                                    <button onClick={() => {setDate(prevDate => ({...prevDate, month:prevDate.month + 1}))}} className="text-xl font-bold p-2 hover:bg-blue-500 rounded-full">
                                         &gt;
                                     </button>
                                 </div>
@@ -153,11 +160,11 @@ export default function DashboardAdmin() {
                         <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-bold">Course Management</p> <div onClick={toggleExpand} className="text-[#2D9CDB] cursor-pointer hover:underline hover:text-blue-800 transition duration-150">Show all</div></div>
                         <div className={containerClasses}>
                             {/* <CourseListSearch items={filteredAssignments} /> */}
-                            {courses && courses.map((item, index) => (<CourseListDetail key={index} courseData={item} />))}
+                            {courses && courses.map((item, index) => (<CourseListDetail key={index} courseData={item} onEditClick={() => { handlerClick("edit", item.id) } } onDeleteClick={() => { handlerClick("delete", item.id) }} />))}
 
                         </div>
                         <div className="flex flex-row items-center col-start-2 justify-center">
-                            <div className="flex flex-row w-full text-[#2D9CDB] text-2xl items-center cursor-pointer space-x-2 hover:underline hover:text-blue-800 transition duration-150">
+                            <div className="flex flex-row w-full text-[#2D9CDB] text-2xl items-center cursor-pointer space-x-2 hover:underline hover:text-blue-800 transition duration-150" onClick={() => handlerClick("add")}>
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M9.99984 1.66663C5.39734 1.66663 1.6665 5.39746 1.6665 9.99996C1.6665 14.6025 5.39734 18.3333 9.99984 18.3333C14.6023 18.3333 18.3332 14.6025 18.3332 9.99996C18.3332 5.39746 14.6023 1.66663 9.99984 1.66663ZM14.1665 10.8333H10.8332V14.1666H9.1665V10.8333H5.83317V9.16663H9.1665V5.83329H10.8332V9.16663H14.1665V10.8333Z" fill="#2D9CDB" />
                                 </svg>

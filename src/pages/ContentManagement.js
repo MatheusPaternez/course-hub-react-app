@@ -1,6 +1,16 @@
 import UserIcon from "../assets/img/user-icon.png";
 import UseFetch from "../hooks/UseFetch";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { CourseHandlersContext } from '../components/CourseHandlersContext';
+import { useParams, useNavigate } from "react-router-dom";
+
+//images 
+import IconHtmlCourse from "../assets/img/Course6.png";
+import IconJavaCourse from "../assets/img/Course3.png";
+import IconJSCourse from "../assets/img/js-course-icon.png";
+import IconPyCourse from "../assets/img/py-course-icon.png";
+import IconUxUiCourse from "../assets/img/uxui-course-icon.jpg";
+
 
 // My Work
 import CompletedIcon from "../assets/img/completed-solid.png";
@@ -13,6 +23,8 @@ import UserEditIcon from "../assets/img/user-icon-edit.png";
 import Course1 from "../assets/img/Course1.png";
 import Course2 from "../assets/img/Course2.png";
 import Course3 from "../assets/img/Course3.png";
+
+
 
 // Side bar - unselected
 import Dashboard from "../assets/img/Dashboard.png";
@@ -54,9 +66,8 @@ function Subvar() {
                         className={`${active === item.key ? "w-9 h-9" : "w-6 h-6"}`}
                     />
                     <span
-                        className={`font-medium ${
-                            active === item.key ? "text-[#2D9CDB] text-base" : "text-white text-sm"
-                        } break-words`}
+                        className={`font-medium ${active === item.key ? "text-[#2D9CDB] text-base" : "text-white text-sm"
+                            } break-words`}
                     >
                         {item.label}
                     </span>
@@ -67,6 +78,8 @@ function Subvar() {
 }
 
 export default function ContentManagement() {
+    const navigate = useNavigate();
+
     //Save at local Storage
     //1. form state
     const [courseID, setCourseID] = useState("");
@@ -78,22 +91,88 @@ export default function ContentManagement() {
     const [teacherName, setTeacherName] = useState("");
     const [date, setDate] = useState("");
 
+    //get params
+    const { mode, courseId } = useParams();
+    //get data from context
+    const { courses, handleAddCourse, handleEditCourse } = useContext(CourseHandlersContext);
+
+    //edit mode flag set
+    const isEditing = mode == "add" && !courseId ? false : true;
+
+    // when edit mode set the date to form
+    useEffect(() => {
+        if (isEditing) {
+            const courseToEdit = courses.find(c => c.id === courseId);
+            if (courseToEdit) {
+                setCourseID(courseToEdit.id);
+                setCourseName(courseToEdit.title);
+                setCourseType(courseToEdit.category);
+                setCourseIntro("");
+                setCourseLevel(courseToEdit.level);
+                setCourseTime(courseToEdit.hours);
+                setTeacherName(courseToEdit.author);
+                setDate("");
+            }
+        }
+    }, [isEditing, courseID, courses]);
+
     //2. Submit->save to localStorage
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        let imgobj = IconHtmlCourse;
+        switch (courseType) {
+            case "Html":
+                imgobj = IconHtmlCourse;
+                break;
+            case "Java":
+                imgobj = IconJavaCourse;
+                break;
+            case "Js":
+                imgobj = IconJSCourse;
+                break;
+            case "Uxui":
+                imgobj = IconUxUiCourse;
+                break;
+            case "Python":
+                imgobj = IconPyCourse;
+                break;
+            default:
+                break;
+
+        }
         const data = {
             id: courseID,
-            name: courseName,
-            type: courseType,
+            title: courseName,
+            category: courseType,
             intro: courseIntro,
             level: courseLevel,
-            time: courseTime,
-            teacher: teacherName,
+            hours: courseTime,
+            author: teacherName,
             date: date,
+            image: imgobj
         };
 
-        localStorage.setItem("courseData", JSON.stringify(data));
-        console.log("Saved Course Data:", data);
+
+
+        // localStorage.setItem("courseData", JSON.stringify(data));
+        // console.log("Saved Course Data:", data);
+        e.preventDefault();
+
+        if (!courseName || !courseLevel || !courseTime || !teacherName) {
+            alert("You need enter the required input");
+            return;
+        }
+
+        // check edit flag
+        if (isEditing) {
+            handleEditCourse(data);
+        } else {
+            handleAddCourse(data);
+        }
+
         alert("Course saved successfully!");
+        // 
+        navigate('/dashboard-admin');
+
 
         //3. reset!
         setCourseID("");
@@ -138,6 +217,7 @@ export default function ContentManagement() {
                                 placeholder="Ex) C1..."
                                 value={courseID}
                                 onChange={(e) => setCourseID(e.target.value)}
+                                required
                             />
                         </div>
 
@@ -153,6 +233,7 @@ export default function ContentManagement() {
                                     placeholder="Type here..."
                                     value={courseName}
                                     onChange={(e) => setCourseName(e.target.value)}
+                                    required
                                 />
                             </div>
 
@@ -164,14 +245,11 @@ export default function ContentManagement() {
                                     onChange={(e) => setCourseType(e.target.value)}
                                 >
                                     <option>-Select-</option>
-                                    <option>Html/Css</option>
-                                    <option>Java Script</option>
+                                    <option value="Html">Html/Css</option>
+                                    <option value="Js">Java Script</option>
                                     <option>Java</option>
                                     <option>Python</option>
-                                    <option>Cyber Security</option>
-                                    <option>UxUi</option>
-                                    <option>Graphic</option>
-                                    <option>Web Design</option>
+                                    <option value="Uxui">UxUi</option>
                                 </select>
                             </div>
                         </div>
@@ -195,6 +273,7 @@ export default function ContentManagement() {
                                     className="w-full bg-gray-100 p-3 rounded-md text-gray-500"
                                     value={courseLevel}
                                     onChange={(e) => setCourseLevel(e.target.value)}
+                                    required
                                 >
                                     <option>-Select-</option>
                                     <option>Beginner</option>
@@ -211,6 +290,7 @@ export default function ContentManagement() {
                                     placeholder="Ex)24h"
                                     value={courseTime}
                                     onChange={(e) => setCourseTime(e.target.value)}
+                                    required
                                 />
                             </div>
                         </div>
@@ -225,6 +305,7 @@ export default function ContentManagement() {
                                     placeholder="Type here..."
                                     value={teacherName}
                                     onChange={(e) => setTeacherName(e.target.value)}
+                                    required
                                 />
                             </div>
 

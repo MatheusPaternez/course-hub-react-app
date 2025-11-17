@@ -1,8 +1,8 @@
 import Subvar from "../components/Subvar";
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import CourseListSearch from "../components/CourseListSearch";
-import UseFetch from "../hooks/UseFetch";
-import { useState, useMemo } from "react";
+import {useFetch} from "../hooks/UseFetch";
+import { useState, useMemo, useContext } from "react";
+import { CourseHandlersContext } from '../components/CourseHandlersContext';
 import IconRenderer from "../components/IconRender";
 
 export default function CourseDetail() {
@@ -10,23 +10,24 @@ export default function CourseDetail() {
     // 1. useLocation
     const location = useLocation();
 
+    // navigate define
     const navigate = useNavigate()
 
     // 2. location.state
     const { title, author, image, hours, level } = location.state || {};
     const { categoryId, courseId } = useParams();
 
-    const { data: courses, loading, error } = UseFetch('/api/course-detail');
+    const { coursesDetails } = useContext(CourseHandlersContext);
 
     // 2. data filtering with useMemo
     const courseDetail = useMemo(() => {
-        if (!courses) {
+        if (!coursesDetails) {
             return []; // nothing if no data
         }
         // id filtering
-        return courses.find(item => String(item.id) === String(courseId)
+        return coursesDetails.find(item => String(item.id) === String(courseId)
         );
-    }, [courses, courseId]);
+    }, [coursesDetails, courseId]);
 
     const handleEnrollClick = () => {
         // define navigate
@@ -36,9 +37,6 @@ export default function CourseDetail() {
             }
         });
     };
-
-    if (loading) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
-    if (error) return <p>Error: {error.message}</p>;
 
     return (
         <>

@@ -1,11 +1,10 @@
 import React from "react";
-import { useState } from "react";
-import useFetch from "../hooks/UseFetch";
-
+import { useContext } from "react";
+import { CourseHandlersContext } from '../components/CourseHandlersContext';
 export default function CourseList() {
-    const { data: courses, loading, error } = useFetch('/api/courses');
-    if (loading) return <p className="max-w-10xl mx-auto px-6"> Loading ... </p>;
-    if (error) return <p>Error: {error.message}</p>;
+    const { courses } = useContext(CourseHandlersContext);
+    // if (loading) return <p className="max-w-10xl mx-auto px-6"> Loading ... </p>;
+    // if (error) return <p>Error: {error.message}</p>;
     return (
         <section className="bg-gray-50 py-12" >
             <div className="max-w-10xl mx-auto px-6">
