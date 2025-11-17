@@ -1,5 +1,5 @@
 import React from "react";
-import Facebook from "../assets/img/facebook-logo.webp";
+import Facebook from "../assets/img/facebook-logo.png";
 import Twitter from "../assets/img/twitter-icon.png";
 import Vimeo from "../assets/img/vimeo-icon.png";
 import Linkedin from "../assets/img/linkedin-icon.png";

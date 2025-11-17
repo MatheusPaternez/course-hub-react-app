@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 @layer components {
-  .unGrade {
+  .graded {
     /* ungrade class */
     @apply text-[#2D9CDB];
   }
 
-   .graded {
+   .unGrade {
     /* graded class */
     @apply text-[#FB285E];
   }
