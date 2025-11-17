@@ -17,7 +17,7 @@ export default function Subvar() {
     switch (pageId) {
         case 'courses':
             categories.push({ id: 'html', name: 'HTML/CSS', icon: iconHtml });
-            categories.push({ id: 'javascript', name: 'JavaScript', icon: iconJs });
+            categories.push({ id: 'js', name: 'JavaScript', icon: iconJs });
             categories.push({ id: 'java', name: 'Java', icon: iconJava });
             categories.push({ id: 'python', name: 'Python', icon: iconPy });
             categories.push({ id: 'hypen', name: 'hypen', icon: null });

@@ -37,7 +37,7 @@ export default function CourseDetail() {
         });
     };
 
-    if (loading) return  <div className="w-full h-auto pr-12 min-w-[60rem] bg-[#001c27] p-6 col-start-2"><p className=" w-full mx-auto px-6 center-text text-gray-400 text-xl bg-[#001c27]"> Loading ... </p></div>;
+    if (loading) return  <div className="w-full h-screen pr-12 min-w-[60rem] bg-[#001c27] p-6 col-start-2"><p className=" w-full mx-auto px-6 center-text text-gray-400 text-xl bg-[#001c27]"> Loading ... </p></div>;
     if (error) return <p>Error: {error.message}</p>;
 
     return (

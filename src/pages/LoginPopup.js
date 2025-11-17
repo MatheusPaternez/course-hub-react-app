@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import LoginBackground from "../assets/img/login-background.png";
 import Logo from "../assets/img/logo.png";
 import Login from '../components/Login';
+import Header from '../components/Header';
 
 export default function LoginPopup() {
     // Controlled inputs for React form logic
@@ -37,7 +38,6 @@ export default function LoginPopup() {
     };
 
     return (
-        // Main container for both divs sharing the screen
         <div className="flex h-screen bg-white">
 
             {/* Left part */}

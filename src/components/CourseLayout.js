@@ -8,12 +8,11 @@ const CourseLayout = () => {
     <>
       <Header />
 
-      {/* ネストされた子ルートのコンポーネントがここにレンダリングされます */}
+      {/* child root components */}
       <main>
         <Outlet />
       </main>
 
-      {/* 共通フッターなど */}
     </>
   );
 };
