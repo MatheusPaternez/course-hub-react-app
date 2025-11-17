@@ -60,8 +60,7 @@ export default function LoginPopup() {
                 <div className="relative z-10 p-12 flex flex-col justify-between h-full">
                     {/* Logo */}
                     <div className="flex items-center text-xl font-bold">
-                        <img src={Logo} alt='Logo' className="w-10 h-10 mr-2 text-blue-400" />
-                        <p className='text-blue-400'>Sync-Hub</p>
+                        <img src={Logo} alt='Logo' className="h-10 mr-2 text-blue-400" />
                     </div>
 
                     {/* Main text */}
