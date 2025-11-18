@@ -61,6 +61,16 @@ export const useFetch = () => {
               hours: '64 hours',
               level: 'Beginner',
               image: IconHtmlCourse
+            },
+            {
+              id: 'u2',
+              author: 'Tiana DinTaiFung',
+              category: 'Uxui',
+              title: 'Figma for UXUI Designer',
+              rating: 4.9,
+              hours: '64 hours',
+              level: 'Intermediate',
+              image: IconUxUiCourse
             }];
           setData(courseData);
           setLoading(false);
@@ -95,6 +105,14 @@ export const useFetch = () => {
               'Build your own simple multi-section webpage.',
               'Gain confidence to move on to CSS and JavaScript.'
             ], curriculum: ['Lesson 1: Understand the structure of a web page', 'Lesson 2: Learn essential HTML Tags and elements', 'Lesson 3: Add images, links and list to your page', 'Lesson 4: Build a simple multi-section website', 'Lesson 5: Apply basic styling using inline and internal CSS']
+          },{
+            id: 'u2', courseOverview: 'This course is the definitive guide to mastering Figma for professional UX/UI design. You\'ll learn to create responsive interfaces, implement design systems, and collaborate effectively using prototyping and component features.', whatYouWillLearn: [
+              'Master Auto Layout for building responsive and scalable interfaces.',
+              'Design, implement, and manage a reusable component library (Design System).',
+              'Create advanced, user-friendly prototypes with interactive elements.',
+              'Learn collaborative workflows for team handoff and version control.',
+              'Optimize design efficiency using essential plugins and widgets.'
+            ], curriculum: ['Lesson 1: Auto Layout: Creating Flexible and Responsive Designs', 'Lesson 2: Building and Scaling a Component Library', 'Lesson 3: Advanced Prototyping and Interaction Design', 'Lesson 4:Team Collaboration, Version Control, and Handoff', 'Lesson 5:Plugins, Widgets, and Workflow Automation']
           }];
           setData(detailData);
           setLoading(false);

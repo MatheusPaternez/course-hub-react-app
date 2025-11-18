@@ -1,11 +1,69 @@
 import UserIcon from "../assets/img/user-icon.png";
-import Subvar from "../components/Subvar";
 
 import CourseListDetail from "../components/CourseListDetail";
 import { useState, useEffect, useContext } from "react";
 import { CourseHandlersContext } from '../components/CourseHandlersContext';
 import { useNavigate } from 'react-router-dom';
 import Header from "../components/Header";
+
+// Side bar - unselected
+import Dashboard from "../assets/img/Dashboard.png";
+import MyProfile from "../assets/img/MyProfile.png";
+import MyCourse from "../assets/img/MyCourse.png";
+import MyWork from "../assets/img/MyWork.png";
+import Event from "../assets/img/Event.png";
+
+// Side bar - selected
+import SDashboard from "../assets/img/Select-Dashboard.png";
+import SMyProfile from "../assets/img/Select-MyProfile.png";
+import SMyCourse from "../assets/img/Select-MyCourse.png";
+import SMyWork from "../assets/img/Select-MyWork.png";
+import SEvents from "../assets/img/Select-Events.png";
+
+import useAuth from '../hooks/useAuth';
+
+/* Sidebar */
+function Subvar() {
+    const [active, setActive] = useState("dashboard");
+
+    const menu = [
+        { key: "dashboard", label: "Dashboard", icon: Dashboard, activeIcon: SDashboard },
+        { key: "profile", label: "My Profile", icon: MyProfile, activeIcon: SMyProfile },
+        { key: "course", label: "My Course", icon: MyCourse, activeIcon: SMyCourse },
+        { key: "work", label: "My Work", icon: MyWork, activeIcon: SMyWork },
+        { key: "events", label: "Events", icon: Event, activeIcon: SEvents },
+    ];
+
+    return (
+        <div className="w-full h-screen text-white flex flex-col gap-6 py-10 mt-20">
+            {menu.map((item) => (
+                <button
+                    key={item.key}
+                    onClick={() => setActive(item.key)}
+                    className={`flex items-center gap-4 pl-6 py-3 transition-all
+                    `}
+                >
+                    <img
+                        src={active === item.key ? item.activeIcon : item.icon}
+                        className={`${active === item.key ? "w-9 h-9" : "w-6 h-6"}`}
+                    />
+                    <span
+                        className={`
+                        font-medium
+                        ${active === item.key
+                                ? "text-[#2D9CDB] text-base"   // select
+                                : "text-white text-sm"         // unselect
+                            }
+                        break-words   
+                    `}
+                    >
+                        {item.label}
+                    </span>
+                </button>
+            ))}
+        </div>
+    );
+}
 
 function renderCalendar(year, month) {
     const gridContainer = document.getElementById('calendar-grid');
@@ -52,6 +110,8 @@ function renderCalendar(year, month) {
     }
 }
 export default function DashboardAdmin() {
+
+    const { user, signOut } = useAuth(); // get user and signOut from auth context
 
     //for render calendar
     const today = new Date();
@@ -119,11 +179,11 @@ export default function DashboardAdmin() {
                             <div className="h-[21rem] min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-start-1 col-span-2 flex flex-row items-center justify-between">
                                 <div className="flex flex-col flex-1 items-center justify-between">
                                     <img className="w-20 h-20 object-cover" alt="User icon" src={UserIcon}></img>
-                                    <p className="font-bold text-lg">Kenta Onzo</p>
+                                    <p className="font-bold text-lg">{user?.name}</p>
                                 </div>
                                 <div className="mt-4 px-2 flex-3 grid grid-cols-2 grid-rows-2 gap-2">
-                                    <p className="text-lg">Teacher ID</p>
-                                    <p className="text-lg text-gray-500">T-0923</p>
+                                    <p className="text-lg">{user?.role} ID</p>
+                                    <p className="text-lg text-gray-500">A-1003</p>
                                     <p className="text-lg">Department</p>
                                     <p className="text-lg text-gray-500">Frontend</p>
                                     <p className="text-lg">Experience</p>

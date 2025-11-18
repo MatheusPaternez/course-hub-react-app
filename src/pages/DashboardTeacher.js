@@ -7,6 +7,8 @@ import { useState, useEffect, useMemo, useContext } from "react";
 import { CourseHandlersContext } from '../components/CourseHandlersContext';
 import {Link} from 'react-router-dom';
 import Header from "../components/Header";
+import useAuth from '../hooks/useAuth';
+
 
 // Side bar - unselected
 import Dashboard from "../assets/img/Dashboard.png";
@@ -110,6 +112,8 @@ function renderCalendar(year, month) {
     }
 }
 export default function DashboardTeacher() {
+    const { user, signOut } = useAuth(); // get user and signOut from auth context
+
     //load assignment data from local storage or fetch
     const savedData = localStorage.getItem('assignments');
     const initialData = savedData ? JSON.parse(savedData) : null;
@@ -126,7 +130,7 @@ export default function DashboardTeacher() {
         }
         // execute filtering
         return courses.filter(item =>
-            item.author.includes('Kenta') // test filter condition it should be dynamic
+            item.author.includes('Tiana') // test filter condition it should be dynamic
         );
     }, [courses]);
 
@@ -176,10 +180,10 @@ export default function DashboardTeacher() {
                         <div className="h-[21rem] min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-start-1 col-span-2 flex flex-row items-center justify-between">
                             <div className="flex flex-col flex-1 items-center justify-between">
                                 <img className="w-20 h-20 object-cover" alt="User icon" src={UserIcon}></img>
-                                <p className="font-bold text-lg">Kenta Onzo</p>
+                                <p className="font-bold text-lg">{user?.name}</p>
                             </div>
                             <div className="mt-4 px-2 flex-3 grid grid-cols-2 grid-rows-2 gap-2">
-                                <p className="text-lg">Teacher ID</p>
+                                <p className="text-lg">{user?.role} ID</p>
                                 <p className="text-lg text-gray-500">T-0923</p>
                                 <p className="text-lg">Department</p>
                                 <p className="text-lg text-gray-500">Frontend</p>

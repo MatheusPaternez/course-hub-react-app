@@ -3,13 +3,14 @@ import UseFetch from "../hooks/UseFetch";
 import { useState, useEffect, useContext } from "react";
 import { CourseHandlersContext } from '../components/CourseHandlersContext';
 import { useParams, useNavigate } from "react-router-dom";
-
+import Header from "../components/Header";
 //images 
 import IconHtmlCourse from "../assets/img/Course6.png";
 import IconJavaCourse from "../assets/img/Course3.png";
 import IconJSCourse from "../assets/img/js-course-icon.png";
 import IconPyCourse from "../assets/img/py-course-icon.png";
 import IconUxUiCourse from "../assets/img/uxui-course-icon.jpg";
+
 
 
 // My Work
@@ -186,6 +187,7 @@ export default function ContentManagement() {
     };
 
     return (
+        <><Header />
         <main>
             <div className="bg-[#001c27] min-h-screen grid grid-cols-[250px_1fr]">
                 <Subvar />
@@ -213,11 +215,12 @@ export default function ContentManagement() {
                             </label>
                             <input
                                 type="text"
-                                className="w-full bg-gray-100 p-3 rounded-md"
+                                className={`w-full bg-gray-100 p-3 rounded-md ${isEditing?"text-gray-500":""}`}
                                 placeholder="Ex) C1..."
                                 value={courseID}
                                 onChange={(e) => setCourseID(e.target.value)}
                                 required
+                                readOnly={isEditing}
                             />
                         </div>
 
@@ -335,5 +338,6 @@ export default function ContentManagement() {
                 </div>
             </div>
         </main>
+        </>
     );
 }
