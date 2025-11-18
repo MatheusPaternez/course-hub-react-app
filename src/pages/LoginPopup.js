@@ -1,12 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaGoogle, FaApple, FaFacebookF } from 'react-icons/fa';
 import { Mail, Lock, Eye } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import LoginBackground from "../assets/img/login-background.png";
 import Logo from "../assets/img/logo.png";
+import useAuth from '../hooks/useAuth';
 
-export default function Login() {
+export default function LoginPopup() {
+    // Controlled inputs for React form logic
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
+    const { signIn } = useAuth(); // get signIn from context
+
+    // Handle form submit
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError(null);
+        setLoading(true);
+
+        try {
+            // Call signIn from Auth context (returns undefined on success or string error)
+            const result = await signIn(email, password);
+
+            if (result) {
+                // signIn returned an error message
+                setError(result);
+            } else {
+                // successful login
+                navigate('/home');
+            }
+        } catch (err) {
+            // Unexpected error
+            setError('An error occurred');
+            console.error('Login error:', err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
-        // Main container for both divs sharing the screen
+         // Main container for both divs sharing the screen
         <div className="flex h-screen bg-white">
 
             {/* Left part */}
@@ -22,9 +60,7 @@ export default function Login() {
                 <div className="relative z-10 p-12 flex flex-col justify-between h-full">
                     {/* Logo */}
                     <div className="flex items-center text-xl font-bold">
-                        <img src={Logo} alt='Logo' className="w-10 h-10 mr-2 text-blue-400" fill="currentColor" 
-                        viewBox="0 0 24 24" />
-                        <p className='text-blue-400'>Sync-Hub</p>
+                        <img src={Logo} alt='Logo' className="h-10 mr-2 text-blue-400" />
                     </div>
 
                     {/* Main text */}
@@ -47,7 +83,7 @@ export default function Login() {
                 <div className="w-full max-w-md">
                     <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center lg:text-left">Login</h2>
 
-                    <form className="space-y-6">
+                    <form className="space-y-6" onSubmit={handleSubmit}>
                         {/* Email Field */}
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -64,6 +100,8 @@ export default function Login() {
                                     autoComplete="email"
                                     required
                                     placeholder="Enter email address"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     className="appearance-none block w-full pl-10 px-3 py-2 border border-gray-300 rounded-md 
                                     placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                 />
@@ -82,16 +120,22 @@ export default function Login() {
                                 <input
                                     id="password"
                                     name="password"
-                                    type="password"
+                                    type={showPassword ? 'text' : 'password'}
                                     autoComplete="current-password"
                                     required
                                     placeholder="Enter Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     className="appearance-none block w-full pl-10 px-3 py-2 border border-gray-300 rounded-md 
                                     placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                 />
                                 {/* Eye Icon for Toggle Password Visibility */}
-                                <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm 
-                                leading-5">
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword((prev) => !prev)}
+                                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                                    aria-label="Toggle password visibility"
+                                >
                                     <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" aria-hidden="true" />
                                 </button>
                             </div>
@@ -127,9 +171,13 @@ export default function Login() {
                                 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 
                                 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out"
                             >
-                                Login
+                                {/* When its loading, change the text to show its loading */}
+                                {loading ? 'Logging in...' : 'Login'}
                             </button>
                         </div>
+
+                        {/* Show error message */}
+                        {error && <p className="text-sm text-red-500">{error}</p>}
                     </form>
 
                     {/* or continue with */}
@@ -147,22 +195,19 @@ export default function Login() {
 
                         {/* Social Login Buttons */}
                         <div className="mt-6 flex justify-center space-x-6">
-                            {/* Google */}
-                            <button className="text-3xl text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out">
+                            <button className="text-3xl text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out" type="button">
                                 <FaGoogle />
                             </button>
-                            {/* Apple */}
-                            <button className="text-3xl text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out">
+                            <button className="text-3xl text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out" type="button">
                                 <FaApple />
                             </button>
-                            {/* Facebook */}
-                            <button className="text-3xl text-blue-600 hover:text-blue-700 transition duration-150 ease-in-out">
+                            <button className="text-3xl text-blue-600 hover:text-blue-700 transition duration-150 ease-in-out" type="button">
                                 <FaFacebookF />
                             </button>
                         </div>
                     </div>
 
-                    {/* Sign Up */}
+                    {/* Sign up */}
                     <div className="mt-8 text-center">
                         <p className="text-sm text-gray-600">
                             Don't have an account?{' '}
