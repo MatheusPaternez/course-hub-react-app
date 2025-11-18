@@ -1,9 +1,11 @@
 import UserIcon from "../assets/img/user-icon.png";
 // import Subvar from "../components/Subvar";
 import CourseListSearch from "../components/CourseListSearch";
-import UseFetch from "../hooks/UseFetch";
+import {useFetch} from "../hooks/UseFetch";
 import Assignment from "../components/Assignment";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
+import { CourseHandlersContext } from '../components/CourseHandlersContext';
+import {Link} from 'react-router-dom';
 import Header from "../components/Header";
 
 // Side bar - unselected
@@ -19,6 +21,7 @@ import SMyProfile from "../assets/img/Select-MyProfile.png";
 import SMyCourse from "../assets/img/Select-MyCourse.png";
 import SMyWork from "../assets/img/Select-MyWork.png";
 import SEvents from "../assets/img/Select-Events.png";
+
 
 function Subvar() {
     const [active, setActive] = useState("dashboard");
@@ -62,6 +65,7 @@ function Subvar() {
     );
 }
 
+
 function renderCalendar(year, month) {
     const gridContainer = document.getElementById('calendar-grid');
     if (!gridContainer) return; // find container
@@ -81,7 +85,7 @@ function renderCalendar(year, month) {
     for (let i = 0; i < startDayOfWeek; i++) {
         const emptyCell = document.createElement('div');
         emptyCell.className = 'p-2 text-center text-gray-400';
-        emptyCell.textContent = ''; // または前月の日付
+        emptyCell.textContent = ''; 
         gridContainer.appendChild(emptyCell);
     }
 
@@ -111,12 +115,9 @@ export default function DashboardTeacher() {
     const initialData = savedData ? JSON.parse(savedData) : null;
 
     const [assignments, setAssignments] = useState(initialData);
-    // const shouldFetch = assignments === null;
-    const fetchUrl = assignments === null ? '/api/mywork' : null;
-    //fetch assignment data
-    const { data: work, loading, error } = UseFetch(fetchUrl);
-    //fetch course data that does matter for this account
-    const { data: courses, loadingCourse, errorCourse } = UseFetch('/api/courses');
+
+    const { courses, work } = useContext(CourseHandlersContext);
+
 
     // useMemo for filtering assignments for a specific student
     const filteredAssignments = useMemo(() => {
@@ -129,6 +130,7 @@ export default function DashboardTeacher() {
         );
     }, [courses]);
 
+    //assignment data set
     useEffect(() => {
         if (work && assignments == null) {
             setAssignments(work);
@@ -137,8 +139,6 @@ export default function DashboardTeacher() {
         }
     }, [work, assignments]);
 
-    if (loading || loadingCourse) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
-    if (error || errorCourse) return <p>Error: {error.message}</p>;
     //update grade for save to local storage
     const handleGradeUpdate = (targetId, newGrade) => {
         const updatedAssignments = assignments.map(assignment => {
@@ -217,7 +217,7 @@ export default function DashboardTeacher() {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-medium text-2xl">Course Management</p> <a href="#" className="text-[#2D9CDB]">Explore All Courses</a></div>
+                        <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-medium text-2xl">Course Management</p><Link to="/courses"  className="text-[#2D9CDB]">Explore All Courses</Link></div>
                         <div className="h-auto min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-span-3">
                             <CourseListSearch items={filteredAssignments} />
                         </div>

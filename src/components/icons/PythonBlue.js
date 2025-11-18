@@ -3,7 +3,7 @@ import React from 'react';
 export default function PythonBlue(iconsProps) {
     return (
         <svg {...iconsProps} width="35" height="40" viewBox="0 0 35 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <mask id="mask0_75_229" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="2" width="35" height="36">
+            <mask id="mask0_75_229"  maskUnits="userSpaceOnUse" x="0" y="2" width="35" height="36">
                 <path d="M0 2.10526H35V37.8947H0V2.10526Z" fill="white" />
             </mask>
             <g mask="url(#mask0_75_229)">
