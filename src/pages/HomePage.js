@@ -1,11 +1,21 @@
+import React, { useEffect, useState } from 'react';
 import homepageBanner from '../assets/img/homepage-banner.jpg';
 import CourseList from '../components/CourseList';
 
 export default function HomePageHeader() {
+    // simple mounted flag to trigger a small entrance animation
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        // Timeout to the animation run
+        const t = setTimeout(() => setMounted(true), 20); // tiny delay so transition runs
+        return () => clearTimeout(t);
+    }, []);
+
     return (
         <main>
             <div
-                className="relative min-h-[80vh] flex items-center justify-center bg-cover bg-center text-white text-center px-4 py-20"
+                className={`relative min-h-[80vh] flex items-center justify-center bg-cover bg-center text-white text-center px-4 py-20 transform transition-all duration-500 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{
                     backgroundImage: `linear-gradient(rgba(34, 58, 67,0.9), rgba(34, 58, 67,0.9)),url(${homepageBanner})`
                 }}>
@@ -101,49 +111,6 @@ export default function HomePageHeader() {
                 </div>
             </section>
             <CourseList home="true"/>
-            <section className="relative overflow-hidden mt-12">
-                {/* Decorative SVG grid */}
-                <div className="absolute inset-0 pointer-events-none">
-                    <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <defs>
-                            <linearGradient id="g1" x1="0" x2="1">
-                                <stop offset="0%" stopColor="#98bfe4ff" />
-                                <stop offset="100%" stopColor="#4da5ff" />
-                            </linearGradient>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#g1)" />
-                        {/* subtle white grid lines */}
-                        <g opacity="0.06" stroke="#ffffff">
-                            <path d="M0 200 Q360 120 720 200 T1440 200" fill="none" strokeWidth="1.5" />
-                            <path d="M0 160 Q360 80 720 160 T1440 160" fill="none" strokeWidth="1" />
-                            <path d="M0 120 Q360 40 720 120 T1440 120" fill="none" strokeWidth="1" />
-                        </g>
-                    </svg>
-                </div>
-
-                {/* Content container */}
-                {/* <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 text-center">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
-                        Join a community where developers grow together.
-                    </h2>
-
-                    <p className="mt-4 text-sm sm:text-base text-white/90 max-w-2xl mx-auto">
-                        Learn, collaborate, and build your future with Sync-Hub — where teamwork sparks real growth.
-                    </p>
-
-                    <div className="mt-8">
-                        <a
-                            href="#"
-                            className="bg-blue-600 inline-flex items-center gap-3 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition"
-                        >
-                            Register Now
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </a>
-                    </div>
-                </div> */}
-            </section>
         </main>
     );
 };
