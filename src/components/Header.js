@@ -30,7 +30,7 @@ export default function Header() {
                 setDashboardLabel('Teacher Dashboard');
                 break;
             case 'admin':
-                setDashboardLink('/content');
+                setDashboardLink('/dashboard-admin');
                 setDashboardLabel('Content Manager');
                 break;
             default:
@@ -64,7 +64,7 @@ export default function Header() {
                         <Link to="/" className="hover:text-blue-500 transition">Home</Link>
                         <Link to="/courses" className="hover:text-blue-500 transition">Courses</Link>
                         <Link to={dashboardLink} className="hover:text-blue-500 transition">{dashboardLabel}</Link>
-                        <Link to="/team-up" className="hover:text-blue-500 transition">Team-Up</Link>
+                        {/* <Link to="/team-up" className="hover:text-blue-500 transition">Team-Up</Link>  in the future*/}
                     </nav>
 
                     {/* RIGHT: Actions / profile */}
@@ -146,13 +146,13 @@ export default function Header() {
                         >
                             {dashboardLabel}
                         </Link>
-                        <Link
+                        {/* <Link
                             to="/team-up"
                             onClick={() => setShowMobileMenu(false)}
                             className="block text-sm text-gray-200 hover:text-blue-500 transition py-2"
                         >
                             Team-Up
-                        </Link>
+                        </Link> */}
                     </nav>
                 )}
             </header>

@@ -43,9 +43,9 @@ export default function App() {
                         </Route>
                     </Routes>
                 </CourseHandlersProvider>
-            </BrowserRouter>
+              </BrowserRouter>
             <Footer />
-             </AuthProvider>
+            </AuthProvider>
         </>
     )
 }
