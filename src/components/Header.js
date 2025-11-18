@@ -63,7 +63,19 @@ export default function Header() {
                     <nav className="hidden md:flex gap-6 text-sm text-gray-200" aria-label="Primary">
                         <Link to="/" className="hover:text-blue-500 transition">Home</Link>
                         <Link to="/courses" className="hover:text-blue-500 transition">Courses</Link>
-                        <Link to={dashboardLink} className="hover:text-blue-500 transition">{dashboardLabel}</Link>
+                        {
+                            !user ? (
+                                <Link to="/login" className="hover:text-blue-500 transition">
+                                    {dashboardLabel}
+                                </Link>
+                            ) : (
+                                <Link to={dashboardLink} className="hover:text-blue-500 transition">
+                                    {dashboardLabel}
+                                </Link>
+                            )
+                        }
+                        {/* <Link to={dashboardLink} className="hover:text-blue-500 transition">{dashboardLabel}</Link>
+                        <Link to="/login" className="hover:text-blue-500 transition">{dashboardLabel}</Link> */}
                         {/* <Link to="/team-up" className="hover:text-blue-500 transition">Team-Up</Link>  in the future*/}
                     </nav>
 
@@ -156,7 +168,6 @@ export default function Header() {
                     </nav>
                 )}
             </header>
-            <Outlet />
         </>
 
     );

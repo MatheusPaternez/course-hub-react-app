@@ -44,7 +44,7 @@ export default function LoginPopup() {
     };
 
     return (
-        // Main container for both divs sharing the screen
+         // Main container for both divs sharing the screen
         <div className="flex h-screen bg-white">
 
             {/* Left part */}

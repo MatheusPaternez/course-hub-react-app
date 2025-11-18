@@ -4,6 +4,7 @@ import {useFetch} from "../hooks/UseFetch";
 import { useState, useMemo, useContext } from "react";
 import { CourseHandlersContext } from '../components/CourseHandlersContext';
 import IconRenderer from "../components/IconRender";
+import Header from "../components/Header";
 
 export default function CourseDetail() {
 
@@ -40,7 +41,7 @@ export default function CourseDetail() {
 
     return (
         <>
-            <div className="w-full h-auto pl-8 pt-6 bg-[#001c27] grid grid-cols-[1fr_7fr] overflow-x-hidden ">
+            <div className="w-full h-auto pl-8 pt-6 bg-[#001c27] grid grid-cols-[250px_7fr] overflow-x-hidden ">
                 <Subvar />
                 {/*<Navbar />/* Navbar component */}
                 <div className="mt-4 ml-12 w-full pr-12 min-w-[70rem] bg-gray-50 p-6 rounded-4xl col-start-2">

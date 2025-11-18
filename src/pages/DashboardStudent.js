@@ -1,6 +1,7 @@
 import UserIcon from "../assets/img/user-icon.png";
 import UseFetch from "../hooks/UseFetch";
 import { useState, useEffect } from "react";
+import Header from "../components/Header";
 
 // My Work
 import CompletedIcon from "../assets/img/completed-solid.png";
@@ -116,6 +117,8 @@ export default function DashboardStudent() {
     setTimeout(() => renderCalendar(today.getFullYear(), today.getMonth()), 100);
 
     return (
+        <>
+        <Header />
         <main>
             <div className="bg-[#001c27] min-h-screen grid grid-cols-[250px_1fr]">
          <Subvar />
@@ -336,5 +339,6 @@ export default function DashboardStudent() {
 
             </div>
         </main>
+        </>
     );
 }

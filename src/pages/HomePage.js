@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import homepageBanner from '../assets/img/homepage-banner.jpg';
 import CourseList from '../components/CourseList';
-
+import Header from '../components/Header';
 export default function HomePageHeader() {
     // simple mounted flag to trigger a small entrance animation
     const [mounted, setMounted] = useState(false);
@@ -13,6 +13,8 @@ export default function HomePageHeader() {
     }, []);
 
     return (
+        <>
+        <Header />
         <main>
             <div
                 className={`relative min-h-[80vh] flex items-center justify-center bg-cover bg-center text-white text-center px-4 py-20 transform transition-all duration-500 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
@@ -112,5 +114,6 @@ export default function HomePageHeader() {
             </section>
             <CourseList home="true"/>
         </main>
+        </>
     );
 };
