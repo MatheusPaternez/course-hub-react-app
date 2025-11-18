@@ -9,7 +9,7 @@ export default function IconRenderer ({ iconName }) {
   const IconMap = {
   html:IconHtml,
   js: IconJs,
-  Python: IconPython,
+  python: IconPython,
   uxui: IconUxui,
   java:IconJava,
   cyber:IconCyber

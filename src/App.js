@@ -6,11 +6,13 @@ import Footer from './components/Footer';
 import CourseSearch from './pages/CourseSearch';
 import CourseDetail from './pages/CourseDetail';
 import DashboardTeacher from './pages/DashboardTeacher';
-import { AuthProvider } from './contexts/auth';
-import useAuth from './hooks/useAuth';
+import DashboardAdmin from './pages/DashboardAdmin';
 import CoursePageSection from './components/CoursePageSection';
 import DashboardStudent from './pages/DashboardStudent';
 import ContentManagement from './pages/ContentManagement';
+import { CourseHandlersProvider } from './components/CourseHandlersContext';
+import { AuthProvider } from './contexts/auth';
+import useAuth from './hooks/useAuth';
 
 // Private route component using Auth context
 const Private = ({ Compo }) => {
@@ -24,21 +26,25 @@ export default function App() {
         <>
             <AuthProvider>
                 <BrowserRouter>
+                <CourseHandlersProvider>
                     <Routes>
                         <Route path='login' element={<LoginPopup />} />
                         <Route path='/' element={<Header />}>
                             <Route path='home' element={<HomePage />} />
                             <Route index element={<HomePage />} />
+                            {/* <Route path="/:pageId/:categoryId?" element={<CourseSearch />} /> */}
+                            <Route path="/dashboard-admin" element={<DashboardAdmin />} />
                             <Route path="/:pageId/:categoryId?" element={<DashboardTeacher />} />
                             <Route path="dashboard" element={<DashboardStudent />} />
                             <Route path="/courses/" element={<CourseSearch />} />
                             <Route path="/courses/:categoryId/:courseId" element={<CourseDetail />} />
                             <Route path='/courses/section/:courseId' element={<CoursePageSection />} />
-                            <Route path="/content" element={<ContentManagement />} />
+                            <Route path="/content/:mode/:courseId?" element={<ContentManagement />} />
                         </Route>
                     </Routes>
-                </BrowserRouter>
-                <Footer />
+                </CourseHandlersProvider>
+              </BrowserRouter>
+            <Footer />
             </AuthProvider>
         </>
     )

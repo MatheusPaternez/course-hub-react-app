@@ -1,16 +1,16 @@
 import UserIcon from "../assets/img/user-icon.png";
 import Subvar from "../components/Subvar";
-import CourseListSearch from "../components/CourseListSearch";
-import {useFetch} from "../hooks/UseFetch";
-import Assignment from "../components/Assignment";
-import { useState, useEffect, useMemo, useContext } from "react";
+
+import CourseListDetail from "../components/CourseListDetail";
+import { useState, useEffect, useContext } from "react";
 import { CourseHandlersContext } from '../components/CourseHandlersContext';
-import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function renderCalendar(year, month) {
     const gridContainer = document.getElementById('calendar-grid');
     if (!gridContainer) return; // find container
 
+    
     gridContainer.innerHTML = ''; // clear carendar
 
     // first day of month
@@ -50,52 +50,53 @@ function renderCalendar(year, month) {
         gridContainer.appendChild(dateCell);
     }
 }
-export default function DashboardTeacher() {
-    //load assignment data from local storage or fetch
-    const savedData = localStorage.getItem('assignments');
-    const initialData = savedData ? JSON.parse(savedData) : null;
-
-    const [assignments, setAssignments] = useState(initialData);
-
-    const { courses, work } = useContext(CourseHandlersContext);
-
-
-    // useMemo for filtering assignments for a specific student
-    const filteredAssignments = useMemo(() => {
-        if (!courses) {
-            return []; // return empty array if courses data is not available
-        }
-        // execute filtering
-        return courses.filter(item =>
-            item.author.includes('Kenta') // test filter condition it should be dynamic
-        );
-    }, [courses]);
-
-    //assignment data set
-    useEffect(() => {
-        if (work && assignments == null) {
-            setAssignments(work);
-            localStorage.setItem('assignments', JSON.stringify(work));
-
-        }
-    }, [work, assignments]);
-
-    //update grade for save to local storage
-    const handleGradeUpdate = (targetId, newGrade) => {
-        const updatedAssignments = assignments.map(assignment => {
-            if (assignment.courseId === targetId) {
-                return { ...assignment, grade: newGrade, status: 'Graded' };
-            }
-            return assignment;
-        });
-        setAssignments(updatedAssignments);
-        localStorage.setItem('assignments', JSON.stringify(updatedAssignments));
-    };
-
+export default function DashboardAdmin() {
+ 
     //for render calendar
     const today = new Date();
 
-    setTimeout(() => renderCalendar(today.getFullYear(), today.getMonth()), 100);
+           //for date
+    const [date, setDate] = useState({ year: today.getFullYear(), month: today.getMonth() });
+
+    setTimeout(() => renderCalendar(date.year, date.month), 100);
+
+
+    //get data from context
+    const { courses, isLoading, handleDeleteCourse } = useContext(CourseHandlersContext);
+ 
+    // navigate define
+    const navigate = useNavigate()
+
+    const handlerClick = (mode, courseId = "") => {
+        if (mode === "edit" || mode === "add") {
+            // define navigate
+            navigate(`/content/${mode}${courseId ? "/" + courseId : ""}`, {
+            });
+        }else if(mode === "delete"){
+            handleDeleteCourse(courseId);
+        }
+
+    };
+
+
+    //for overflow toggle
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const toggleExpand = () => {
+        setIsExpanded(!isExpanded);
+    };
+
+    const containerClasses = `h-90 min-w-full w-max flex-shrink-0 overflow-x-hidden col-span-3 
+    ${isExpanded
+            ? 'h-auto overflow-y-visible' //delete over-flow
+            : 'h-90 overflow-y-scroll'    //normal display
+        }
+  `;
+
+    if (isLoading) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
+    // if (error) return <p>Error: {error.message}</p>;
+
+
     return (
         <main>
             <div className="w-full h-auto pl-16 pt-4 bg-[#001c27] grid grid-cols-[100px_1fr]">
@@ -106,7 +107,7 @@ export default function DashboardTeacher() {
                             <path d="M11 22V8.25H22V22M0 22V13.75H8.25V22M11 5.5V0H22V5.5M0 11V0H8.25V11" fill="#2D9CDB" />
                         </svg>
 
-                        <h2 className="font-bold text-3xl col-span-2 col-start-2">Dashboard-Teacher</h2>
+                        <h2 className="font-bold text-3xl col-span-2 col-start-2">Dashboard-Admin</h2>
                     </div>
 
                     <div className="w-full grid grid-cols-3 gap-4 items-center justify-center p-12">
@@ -139,7 +140,7 @@ export default function DashboardTeacher() {
                                     <h2 className="text-lg font-semibold">
                                         Nov. 2025
                                     </h2>
-                                    <button className="text-xl font-bold p-2 hover:bg-blue-500 rounded-full">
+                                    <button onClick={() => {setDate(prevDate => ({...prevDate, month:prevDate.month + 1}))}} className="text-xl font-bold p-2 hover:bg-blue-500 rounded-full">
                                         &gt;
                                     </button>
                                 </div>
@@ -156,29 +157,18 @@ export default function DashboardTeacher() {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-bold">Course Management</p> <Link to="/courses"  className="text-[#2D9CDB]">Explore All Courses</Link></div>
-                        <div className="h-auto min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-span-3">
-                            <CourseListSearch items={filteredAssignments} />
+                        <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-bold">Course Management</p> <div onClick={toggleExpand} className="text-[#2D9CDB] cursor-pointer hover:underline hover:text-blue-800 transition duration-150">Show all</div></div>
+                        <div className={containerClasses}>
+                            {/* <CourseListSearch items={filteredAssignments} /> */}
+                            {courses && courses.map((item, index) => (<CourseListDetail key={index} courseData={item} onEditClick={() => { handlerClick("edit", item.id) } } onDeleteClick={() => { handlerClick("delete", item.id) }} />))}
+
                         </div>
-                        <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-bold">Assignments & Grading</p> <select defaultValue="default" className="w-32 max-w-32 overflow-hidden text-ellipsis whitespace-nowrap bg-white px-4 py-2 rounded-lg border border-gray-300 text-gray-500 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="default" disabled hidden>Status　　&#8897;</option>
-                            <option value="active">ClassName</option>
-                            <option value="pending">Status</option>
-                            <option value="completed">Grade</option>
-                        </select>
-                        </div>
-                        <div className="h-auto min-w-full w-max flex-shrink-0 overflow-hidden col-span-3">
-                            <div className="flex-shrink-0">
-                                <ul className="w-full text-gray-600 flex flex-row  flex-grow items-center justify-between p-4 px-12 font-bold text-center">
-                                    <li className="flex-1 text-center">Name</li>
-                                    <li className="flex-1 text-center">ClassName</li>
-                                    <li className="flex-1 text-center">Status</li>
-                                    <li className="flex-1 text-center">Grade</li>
-                                    <li className="flex-1 text-center">Action</li>
-                                </ul>
-                                <hr className="w-full border-t border-gray-300" />
-                                {assignments && assignments.map((item, index) => (
-                                    <Assignment key={index} studentData={item} onGradeUpdate={handleGradeUpdate} />))}
+                        <div className="flex flex-row items-center col-start-2 justify-center">
+                            <div className="flex flex-row w-full text-[#2D9CDB] text-2xl items-center cursor-pointer space-x-2 hover:underline hover:text-blue-800 transition duration-150" onClick={() => handlerClick("add")}>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.99984 1.66663C5.39734 1.66663 1.6665 5.39746 1.6665 9.99996C1.6665 14.6025 5.39734 18.3333 9.99984 18.3333C14.6023 18.3333 18.3332 14.6025 18.3332 9.99996C18.3332 5.39746 14.6023 1.66663 9.99984 1.66663ZM14.1665 10.8333H10.8332V14.1666H9.1665V10.8333H5.83317V9.16663H9.1665V5.83329H10.8332V9.16663H14.1665V10.8333Z" fill="#2D9CDB" />
+                                </svg>
+                                <p>Add Course</p>
                             </div>
                         </div>
                     </div>

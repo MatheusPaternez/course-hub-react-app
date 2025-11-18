@@ -4,7 +4,7 @@ import Subvar from "./Subvar";
 
 export default function CoursePageSection() {
 
-    // 1. useLocation
+    // useLocation
     const location = useLocation();
 
     // Destructuring the course prop received
