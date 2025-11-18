@@ -49,11 +49,40 @@ function renderCalendar(year, month) {
     }
 }
 export default function DashboardTeacher() {
+    //sortby(1): variable that stores the selected value from the dropdown
+    const [sortBy, setSortBy] = useState("");
+
     //load assignment data from local storage or fetch
     const savedData = localStorage.getItem('assignments');
     const initialData = savedData ? JSON.parse(savedData) : null;
 
     const [assignments, setAssignments] = useState(initialData);
+
+    //sortbu(2)
+        //1 Copy the current assignments array
+        //2 useMemo use saved value
+        //3 assignments is empty return emty array
+        //4 copy the original assignments array and store it in newData.
+        //5 If sort by name than sort each object (a, b) alphabetically by name. (number)low->high
+        //6 assignment or sortBy are change than calulate again
+    const sortedAssignments = useMemo(() => {
+        if (!assignments) return [];
+
+        const newData = [...assignments];
+        console.log(sortBy+"aaaaaaaaa")
+
+        if (sortBy === "class")
+            newData.sort((a, b) => a.category.localeCompare(b.category));
+
+        if (sortBy === "status")
+            newData.sort((a, b) => a.status.localeCompare(b.status));
+
+        if (sortBy === "grade")
+            newData.sort((a, b) => (a.grade || 0) - (b.grade || 0));
+
+        return newData;
+    }, [sortBy, assignments]);
+
     // const shouldFetch = assignments === null;
     const fetchUrl = assignments === null ? '/api/mywork' : null;
     //fetch assignment data
@@ -162,11 +191,11 @@ export default function DashboardTeacher() {
                         <div className="h-auto min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-span-3">
                             <CourseListSearch items={filteredAssignments} />
                         </div>
-                        <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-bold">Assignments & Grading</p> <select defaultValue="default" className="w-32 max-w-32 overflow-hidden text-ellipsis whitespace-nowrap bg-white px-4 py-2 rounded-lg border border-gray-300 text-gray-500 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-bold">Assignments & Grading</p> <select defaultValue="default" onChange={(e) => setSortBy(e.target.value)}className="w-32 max-w-32 overflow-hidden text-ellipsis whitespace-nowrap bg-white px-4 py-2 rounded-lg border border-gray-300 text-gray-500 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="default" disabled hidden>Status　　&#8897;</option>
-                            <option value="active">ClassName</option>
-                            <option value="pending">Status</option>
-                            <option value="completed">Grade</option>
+                            <option value="class">ClassName</option>
+                            <option value="status">Status</option>
+                            <option value="grade">Grade</option>
                         </select>
                         </div>
                         <div className="h-auto min-w-full w-max flex-shrink-0 overflow-hidden col-span-3">
@@ -179,8 +208,10 @@ export default function DashboardTeacher() {
                                     <li className="flex-1 text-center">Action</li>
                                 </ul>
                                 <hr className="w-full border-t border-gray-300" />
-                                {assignments && assignments.map((item, index) => (
-                                    <Assignment key={index} studentData={item} onGradeUpdate={handleGradeUpdate} />))}
+                                    {sortedAssignments.map((item, index) => (  //sortby(3) assignments-->sortedAssignments
+                                        <Assignment key={index} studentData={item} onGradeUpdate={handleGradeUpdate} />
+                                    ))}
+
                             </div>
                         </div>
                     </div>
