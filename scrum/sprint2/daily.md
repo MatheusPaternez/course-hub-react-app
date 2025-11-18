@@ -12,16 +12,16 @@ Use bullets; keep it brief. Repeat for each day of the sprint.
 - Matheus — Yesterday:HTML and Tailwind  /Today:Keep HTML and Tailwind, and start router / Blockers:
 - Kenta — Yesterday:Fix navigation router /Today:implements Sub navigation bar and test it / Blockers:
 ## Day 3
-- Tiana — Yesterday:  /Today: / Blockers:
-- Matheus — Yesterday:  /Today: / Blockers:
-- Kenta — Yesterday:  /Today: / Blockers:
+- Tiana — Yesterday:Making design for Teachers Dashbord and Administrators Dashboard /Today:make feacher of Student-dashboard page -ing (if i can, i wanna finish) / Blockers:
+- Matheus — Yesterday:Router implemention  /Today:Keep router and html tailwind / Blockers:
+- Kenta — Yesterday:Implemented Sub navigation bar , fix some style of css  /Today:Finish teacher-dashboard page and make dummy API to get data / Blockers: Usage of useEffect
 
 ## Day 4
-- Tiana — Yesterday:  /Today: / Blockers:
-- Matheus — Yesterday:  /Today: / Blockers:
-- Kenta — Yesterday:  /Today: / Blockers:
+- Tiana — Yesterday:make feacher of Student-dashboard page -ing (if i can, i wanna finish) /Today:start to implement content management page / Blockers:
+- Matheus — Yesterday:Keep router and html tailwind  /Today:Improved login feature / Blockers:
+- Kenta — Yesterday:Implemented Sub navigation bar  /Today:Implement course detail and started to adiministrator page / Blockers:
 
 ## Day 5
-- Tiana — Yesterday:  /Today: / Blockers:
-- Matheus — Yesterday:  /Today: / Blockers:
-- Kenta— Yesterday:  /Today: / Blockers:
+- Tiana — Yesterday:started to implement content management page  /Today:implement content management and fix design / Blockers:
+- Matheus — Yesterday:Improving login feature /Today:Login users and section of coursepage / Blockers:yes, I didnt understand how to create new users
+- Kenta— Yesterday:Implement course detail and started to adiministrator page  /Today:implement course add and edit ,delete function / Blockers:
