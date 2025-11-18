@@ -10,11 +10,11 @@ export default function CoursePageSection() {
     // Destructuring the course prop received
     const { title, author = "", poster = "", curriculum = [], hours = 0, level = "" } = location.state || {};
     return (
-        <div className="w-full h-auto pl-8 pt-6 bg-[#001c27] grid grid-cols-[1fr_7fr] overflow-x-hidden pr-8">
+        <div className="w-full h-auto bg-[#001c27] grid grid-cols-[250px_1fr] overflow-x-hidden ">
             <Subvar />
-            <section className="mt-4 ml-12 w-full pr-12 min-w-[70rem] bg-gray-50 p-6 rounded-4xl col-start-2">
-                <header className="mb-6">
-                    <h1 className="text-2xl font-bold text-gray-800">{title || "Untitled Course"}</h1>
+            <section className="mt-12 p-10 w-full pr-12 min-w-[70rem] bg-gray-50 rounded-4xl col-start-2">
+                <header className="mb-6 mt-10 ml-20">
+                    <h1 className="text-3xl font-medium text-gray-800">{title || "Untitled Course"}</h1>
                     <div className="text-sm text-gray-600 flex flex-row items-center mt-2 space-x-2">
                         <span>{author || "Unknown Author"}</span>
                         <span className="mx-2">                            <svg className="mx-2" width="1" height="15" viewBox="0 0 1 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +37,7 @@ export default function CoursePageSection() {
                     </div>
                 </header>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-20">
                     {/* Video area */}
                     <div className="lg:col-span-2">
                         <div className="bg-black rounded overflow-hidden">

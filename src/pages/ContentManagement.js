@@ -206,7 +206,7 @@ export default function ContentManagement() {
                     </div>
 
                     {/* Form container */}
-                    <div className="bg-white p-10 mt-10 ml-20 max-w-5xl">
+                    <div className="bg-white p-10 mt-10 ml-20 max-w-10xl">
 
                         {/* Course ID */}
                         <div className="mb-10">
