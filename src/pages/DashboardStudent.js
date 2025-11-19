@@ -151,21 +151,21 @@ export default function DashboardStudent() {
                                 <a href="#">
                                     <img src={UserEditIcon} className="w-19 h-19 object-cover" />
                                 </a>
-                                <p className="font-normal text-lg mt-5">Kenta Onzo</p>
+                                <p className="font-normal text-lg mt-5">Matheus Paternez</p>
                             </div>
 
                             <div className="grid grid-cols-[130px_1fr] gap-y-4 gap-x-4 flex-1">
                                 <p className="text-lg font-normal">Student ID</p>
-                                <p className="text-lg font-normal text-[#929292]">S-0123</p>
+                                <p className="text-lg font-normal text-[#929292]">S-01</p>
 
                                 <p className="text-lg font-normal">Position</p>
                                 <p className="text-lg font-normal text-[#929292]">Front developer</p>
 
                                 <p className="text-lg font-normal">E-mail</p>
-                                <p className="text-lg font-normal text-[#929292] truncate">kentakentakenta@gmail.com</p>
+                                <p className="text-lg font-normal text-[#929292] truncate">matheus@gmail.com</p>
 
                                 <p className="text-lg font-normal">Phone</p>
-                                <p className="text-lg font-normal text-[#929292]">+1 778-778-7788</p>
+                                <p className="text-lg font-normal text-[#929292]">+1 (437) 299-2585</p>
 
                                 <p className="text-lg font-normal">Portfolio</p>
                                 <p className="text-lg font-normal text-[#929292] truncate">https://github.com/MatheusPaternez</p>
