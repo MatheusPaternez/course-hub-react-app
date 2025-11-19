@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom"
 import Subvar from "./Subvar";
 
@@ -9,6 +9,32 @@ export default function CoursePageSection() {
 
     // Destructuring the course prop received
     const { title, author = "", poster = "", curriculum = [], hours = 0, level = "" } = location.state || {};
+
+    const [cLesson, setLesson] = useState(curriculum ? curriculum[0] : "");
+
+    const handleDone = (id) => {
+        if (!clickedItemIds.includes(id)) {
+            // if the id doesn't include array, add the id
+            setClickedItemIds([...clickedItemIds, id]);
+        }
+    };
+
+    const handleNext =() =>{
+        const targetIdx = curriculum?.indexOf(cLesson) === (curriculum.length - 1 )? -1:curriculum?.indexOf(cLesson)
+        setLesson(curriculum[targetIdx + 1]);
+        handleDone(targetIdx == -1 ? curriculum.length - 1 :targetIdx);
+    }
+
+    const handleBefore =() =>{
+        const targetIdx = curriculum?.indexOf(cLesson) === 0? curriculum.length :curriculum?.indexOf(cLesson);
+        setLesson(curriculum[targetIdx - 1]);
+        handleDone(targetIdx == curriculum.length ? 0 :targetIdx);
+    }
+
+    const [clickedItemIds, setClickedItemIds] = useState([-1]);
+
+
+    const activeClassName = '!bg-blue-300';
     return (
         <div className="w-full h-auto pl-8 pt-6 bg-[#001c27] grid grid-cols-[1fr_7fr] overflow-x-hidden pr-8">
             <Subvar />
@@ -52,7 +78,7 @@ export default function CoursePageSection() {
 
                         <div className="mt-3">
                             <h2 className="text-lg font-semibold text-gray-800">
-                                Course video
+                                {cLesson}
                             </h2>
                             <p className="text-sm text-gray-600 mt-1">
                                 Video source and lesson details will be added later.
@@ -71,22 +97,35 @@ export default function CoursePageSection() {
                                     <li className="p-4 text-sm text-gray-500">No content available.</li>
                                 )}
 
-                                {curriculum.map((lesson, i) => (
-                                    <li
-                                        key={lesson ?? i}
-                                        className="p-3 flex justify-between items-center"
-                                    >
+                                {curriculum.map((lesson, i) => {
+                                    const isClicked = clickedItemIds.includes(i);
+                                    return (
+                                        <li
+                                            key={lesson ?? i}
+                                            className={`p-3 flex justify-between items-center hover:bg-blue-400 ${cLesson === lesson ? activeClassName : ""} ${isClicked ? "bg-blue-100" : ""}`} onClick={() => { setLesson(lesson); handleDone(i) }}
+                                        >
+                                            <div >
+                                                <div className="text-sm font-medium text-gray-800 ">{lesson}</div>
+                                            </div>
+                                            <div className="text-xs text-gray-40">{isClicked ? "Done" : ""}</div>
+                                        </li>
+                                    )
+                                })}
+                                <li className="p-4 text-sm text-gray-500">
+                                    <div className="flex flex-row items-center justify-between">
                                         <div>
-                                            <div className="text-sm font-medium text-gray-800">{lesson}</div>
+                                            <p className="text-sm font-medium text-gray-800 hover:underline hover:cursor-pointer hover:text-gray-950" onClick={handleBefore}>&lt; prev</p>
                                         </div>
-                                        <div className="text-xs text-gray-400">{lesson ? "Done" : ""}</div>
-                                    </li>
-                                ))}
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-800 hover:underline hover:cursor-pointer hover:text-gray-950" onClick={handleNext}>next &gt;</p>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </aside>
                 </div>
             </section>
-            </div>
-            );
+        </div>
+    );
 };
