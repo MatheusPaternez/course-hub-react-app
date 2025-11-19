@@ -127,7 +127,7 @@ export default function DashboardStudent() {
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 22V8.25H22V22M0 22V13.75H8.25V22M11 5.5V0H22V5.5M0 11V0H8.25V11" fill="#2D9CDB" />
                 </svg>
-                <h2 className="font-semibold text-3xl">Dashboard-Student</h2>
+                <h2 className="text-3xl">Dashboard-Student</h2>
             </div>
 
                     {/*  Profile & Events */}

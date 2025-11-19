@@ -165,12 +165,12 @@ export default function DashboardAdmin() {
                 <div className="w-full h-auto pl-2 pt-4 bg-[#001c27] grid grid-cols-[80px_1fr]">
                     <Subvar />
                     <div className="mt-12 ml-30 w-9/10 pr-12 bg-gray-50 p-6 rounded-tl-4xl col-start-2">
-                        <div className="w-full items-center flex flex-row relative">
+                        <div className="w-full items-center pl-10 pt-10 flex flex-row relative">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-4 left-0">
                                 <path d="M11 22V8.25H22V22M0 22V13.75H8.25V22M11 5.5V0H22V5.5M0 11V0H8.25V11" fill="#2D9CDB" />
                             </svg>
 
-                            <h2 className="font-bold text-3xl col-span-2 col-start-2">Dashboard-Admin</h2>
+                            <h2 className="text-3xl col-span-2 col-start-2">Dashboard-Admin</h2>
                         </div>
 
                         <div className="w-full grid grid-cols-3 gap-4 items-center justify-center p-12">
