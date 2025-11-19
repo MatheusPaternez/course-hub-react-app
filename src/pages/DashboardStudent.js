@@ -122,8 +122,8 @@ export default function DashboardStudent() {
         <main>
             <div className="bg-[#001c27] min-h-screen grid grid-cols-[250px_1fr]">
          <Subvar />
-        <div className="w-full bg-gray-50 p-10 rounded-3xl mr-10 mt-12">
-            <div className="w-full flex items-center gap-3 ml-20 mt-10">
+        <div className="w-full bg-gray-50 p-10 rounded-3xl mt-12">
+            <div className="w-full flex items-center gap-3 pl-10 mt-10">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 22V8.25H22V22M0 22V13.75H8.25V22M11 5.5V0H22V5.5M0 11V0H8.25V11" fill="#2D9CDB" />
                 </svg>
