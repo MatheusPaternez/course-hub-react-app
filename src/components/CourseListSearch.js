@@ -14,7 +14,7 @@ export default function CourseListSearch({ items }) {
         });
     };
     return (
-        <section className="bg-gray-50 py-12 bg-white " >
+        <section className="py-12" >
             <div className="max-w-10xl mx-auto px-20">
                 {/* Heading */}
                 {/* Courses grid */}
