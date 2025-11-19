@@ -222,7 +222,7 @@ export default function DashboardTeacher() {
                             </div>
                         </div>
                         <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-medium text-2xl">Course Management</p><Link to="/courses"  className="text-[#2D9CDB]">Explore All Courses</Link></div>
-                        <div className="h-auto min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-span-3">
+                        <div className="h-auto min-w-full w-max flex-shrink-0 overflow-hidden col-span-3 shadow-sm">
                             <CourseListSearch items={filteredAssignments} />
                         </div>
                         <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-medium text-2xl">Assignments & Grading</p> <select defaultValue="default" className="w-32 max-w-32 overflow-hidden text-ellipsis whitespace-nowrap bg-white px-4 py-2 rounded-lg border border-gray-300 text-gray-500 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500">
