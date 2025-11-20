@@ -41,13 +41,13 @@ export default function CourseDetail() {
 
     return (
         <>
-            <div className="w-full h-auto pl-8 pt-6 bg-[#001c27] grid grid-cols-[250px_7fr] overflow-x-hidden ">
+            <div className="w-full h-auto bg-[#001c27] grid grid-cols-[250px_7fr] overflow-x-hidden ">
                 <Subvar />
                 {/*<Navbar />/* Navbar component */}
-                <div className="mt-4 ml-12 w-full pr-12 min-w-[70rem] bg-gray-50 p-6 rounded-4xl col-start-2">
-                    <div className="w-full grid grid-cols-[4rem_1fr_1fr] items-center justify-between relative bg-gray-50">
+                <div className="mt-12 w-full pr-12 min-w-[70rem] bg-gray-50 p-10 rounded-4xl col-start-2">
+                    <div className="w-full grid grid-cols-[4rem_1fr_1fr] items-center justify-between relative bg-gray-50 mt-10 ml-20">
                         <IconRenderer iconName={categoryId}/>
-                        <h2 className="font-bold text-3xl col-span-2 col-start-2">{title}</h2>
+                        <h2 className="font-medium text-3xl col-span-2 col-start-2">{title}</h2>
                         <div className="flex gap-4 text-gray-400 items-center mt-4" >
                             <p>{author}</p>
                             <svg className="mx-2" width="1" height="15" viewBox="0 0 1 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +70,7 @@ export default function CourseDetail() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-6 p-6 mt-6">
+                    <div className="grid grid-cols-2 gap-6 p-6 mt-6 px-20">
                         <img src={image} alt={title} className="w-full h-84 object-cover" />
                         <div className="w-full">
                             <p className="text-3xl font-medium">Course Contents</p>

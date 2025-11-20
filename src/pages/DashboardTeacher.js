@@ -165,7 +165,7 @@ export default function DashboardTeacher() {
         <main>
             <div className="w-full h-auto bg-[#001c27] grid grid-cols-[200px_1fr]">
                 <Subvar />
-                <div className="w-full mt-12 p-10 w-9/10 pr-12 bg-gray-50 rounded-tl-4xl col-start-2">
+                <div className="w-full mt-12 p-10 pr-12 bg-gray-50 rounded-4xl col-start-2">
                     <div className="w-full items-center flex flex-row relative mt-10 ml-20">
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-4 left-0">
                             <path d="M11 22V8.25H22V22M0 22V13.75H8.25V22M11 5.5V0H22V5.5M0 11V0H8.25V11" fill="#2D9CDB" />
@@ -222,7 +222,7 @@ export default function DashboardTeacher() {
                             </div>
                         </div>
                         <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-medium text-2xl">Course Management</p><Link to="/courses"  className="text-[#2D9CDB]">Explore All Courses</Link></div>
-                        <div className="h-auto min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-span-3">
+                        <div className="h-auto min-w-full w-max flex-shrink-0 overflow-hidden col-span-3 shadow-sm bg-white">
                             <CourseListSearch items={filteredAssignments} />
                         </div>
                         <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-medium text-2xl">Assignments & Grading</p> <select defaultValue="default" className="w-32 max-w-32 overflow-hidden text-ellipsis whitespace-nowrap bg-white px-4 py-2 rounded-lg border border-gray-300 text-gray-500 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500">

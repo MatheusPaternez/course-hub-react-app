@@ -45,7 +45,7 @@ export default function Subvar() {
             <aside className="w-full h-screen text-white flex flex-col gap-6 py-10 mt-20">
 
                 {/* sub navigation */}
-                <nav className="hidden md:flex gap-6 text-md text-gray-200 flex flex-col px-6" aria-label="Sub Navigation">
+                <nav className="hidden md:flex gap-6 text-md text-gray-200 flex flex-col pl-6 space-y-4" aria-label="Sub Navigation">
                     {categories.map((category, index) => {
                         const IconComponent = category.icon;
                         return category.id === "hypen" ? (
@@ -55,10 +55,10 @@ export default function Subvar() {
                             <Link
                                 key={category.id}
                                 to={`/courses/${category.id}`}
-                                className="flex items-center hover:text-blue-500 transition"
+                                className="flex items-center hover:text-blue-500 transition pr-6"
                             >
-                                {IconComponent && <IconComponent className="h-5 w-5 mr-2" />}
-                                <span>{category.name}</span>
+                                {IconComponent && <IconComponent className="h-6 w-6 mr-4" />}
+                                <span className='font-medium'>{category.name}</span>
                             </Link>
                         );
                     })}
