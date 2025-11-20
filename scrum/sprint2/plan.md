@@ -1,4 +1,4 @@
-# Sprint 1 Plan
+# Sprint 2 Plan
 
 **Project:** Course-Hub  
 **Sprint Goal:**core feature & making pages
@@ -26,7 +26,7 @@ End: 2025‑11‑14
 |---|---|---|---|---|
 | 3 | Make subvar with React |  |  | Done |
 | 6 | Teacher Page : make with react component. |  |  | Done |
-| 3 | Course Detail page : Display course Information And manage progress (Before the start / Progress / Finished) |  |  | In-Progress |
+| 3 | Course Detail page : Display course Information And manage progress (Before the start / Progress / Finished) |  |  | Done |
 | 2 | Dash board : Displaying information Events,Mycourse, My work from data |  |  | Done |
 | 4 | Course enroll page: implement the page with JSX(react) |  |  | Done |
 | 4 | CouseSearchPage : search and Display courses(feature/Search-display) |  |  | Done |
@@ -37,7 +37,5 @@ End: 2025‑11‑14
 See `../definition_of_done.md`.
 
 ## Risks / Assumptions
-- Risk: Inconsistent LocalStorage schema → **Mitigation:** define a single `Coursefinished` array shape up front.
-- Risk: Time underestimated for UI polish → **Mitigation:** keep styles minimal this sprint.
-- Risk: Environment Setup for React, tailwindCSS → **Mitigation:** keep feature minimal this sprint.
-- Risk: going to a complex account implementation  → **Mitigation:** using the accounts that is prepared
+- Risk: Trying to solve a problem and creating more problems. → **Mitigation:** Guarantee basic operation.
+

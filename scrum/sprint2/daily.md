@@ -1,4 +1,4 @@
-# Sprint 1 — Daily Notes (Stand‑up)
+# Sprint 2 — Daily Notes (Stand‑up)
 
 Use bullets; keep it brief. Repeat for each day of the sprint.
 

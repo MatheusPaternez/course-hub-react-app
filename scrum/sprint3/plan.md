@@ -1,7 +1,7 @@
-# Sprint 1 Plan
+# Sprint 3 Plan
 
 **Project:** Course-Hub  
-**Sprint Goal:**core feature & making pages
+**Sprint Goal:**polish css & fix small features
 
 ## Sprint Dates
 Start: 2025‑11‑17 
@@ -19,15 +19,16 @@ End: 2025‑11‑20
 | 2 | As a user, I want to login my page And See the overall information of my achievement. | High | 3 | Correct overall infomation and display those |
 | 3 | As a user, I want to search the course that I want easily  | High | 3 | searching targets course and updates resuts. |
 | 4 | As a user, I want to take an online Course. And I want see it is in progress or not | High | 3 | Listing sub corses  |
+| 5 | As a user, I want to see my Achievement and see the likes that my project got | High | 3 | Listing sub corses  |
 | 6 | As a teacher, I want to see what course assigned me. | High | 3 | Display coursed and edit grades |
 | 7 | As a Administrator , I want to edit course information and add new course | High | 3 | Add, edit, delete courses and display updated course infomation|
 ## Task Breakdown
 | Story ID | Task | Owner | Estimate | Status (To‑Do/In‑Progress/Review/Done) |
 |---|---|---|---|---|
 | 3 | CSS polish  |  |  | Done |
-| 6 | CourseSearch: Design for mobile|  |  | Done |
-| 6 | Dashboard: Design for mobile|  |  | Done |
-| 6 | Homepage: Design for Mobile|  |  | Done |
+| 6 | CourseSearch: Design for mobile|  |  | To‑Do |
+| 6 | Dashboard: Design for mobile|  |  | To‑Do |
+| 6 | Homepage: Design for Mobile|  |  | To‑Do |
 
 ## Definition of Done (reference)
 See `../definition_of_done.md`.

@@ -29,7 +29,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd course-hub-react-app
+  cd my-project
 ```
 
 Install dependencies
@@ -125,6 +125,18 @@ mostly invloves scrum documents
 | `status` | `String` | `---` |
 | `grade` | `double` | `---` |  
 
+## Material of Backlogs
+
+- [Scrum-kanban (Trello)](https://trello.com/b/EkXW1ghb/apixfamily-kanban)
+
+- [Figuma](https://www.figma.com/design/38NwcZ9YrR6ds8CT7imP0t/Final-Project_Course-hub?node-id=1-620&p=f&t=IWVQu6bzu3Sx8wwt-0)
+
+- [Data structures](https://docs.google.com/spreadsheets/d/18v7oqdJ9FNG5TtMjKZ4cLmUq4fGoFygxiAWM-Kv3Clo/edit?gid=1682386802#gid=1682386802)
+## Authors
+
+- [@MatheusPaternez](https://github.com/MatheusPaternez)
+- [@Tianaaaaa](https://github.com/tianakim7691-netizen)
+- [@kent2664](https://github.com/kent2664)
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -154,8 +166,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-## Authors
-
-- [@MatheusPaternez](https://github.com/MatheusPaternez)
-- [@Tianaaaaa](https://github.com/tianakim7691-netizen)
-- [@kent2664](https://github.com/kent2664)

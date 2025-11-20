@@ -38,6 +38,6 @@ End: 2025‑11‑09
 See `../definition_of_done.md`.
 
 ## Risks / Assumptions
-- Risk: Inconsistent LocalStorage schema → **Mitigation:** define a single `Coursefinished` array shape up front.
+- Risk: Inconsistent LocalStorage schema → **Mitigation:** define `Course`,`Course-Detail`,`Mywork` arrays shape up front.
 - Risk: Time underestimated for UI polish → **Mitigation:** keep styles minimal this sprint.
 - Risk: Environment Setup for React, tailwindCSS → **Mitigation:** keep feature minimal this sprint.
