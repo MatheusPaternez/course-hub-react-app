@@ -1,17 +1,19 @@
 
 # Course-Hub
 
-This is a course-hub project made by React.
-It has Course-search, Course-Enroll, Course-management.
-
-
+This is a course-hub project made with React.
+It has a functional login, a Home Page, a Course-search page, 
+Course-Enroll page and Course-management for teachers and admin users.
 
 ## Features
 
+- Login
+A complete functional login function, that allows different users with different roles access this course hub and
+watch courses, manage courses (if you are a teacher or a admin), etc.  
 - Home  
-Display course, sample images, login
+Display course, sample images and a login option.
 - Course Search  
-Searching courses, filtering by side menu, and navigate to Course Detail.
+Searching courses, filtering by side menu and navigate to Course Detail.
 - Dashboards  
 Display student-dashboard, teacher-dashboard, admin-dashboard by the login info
 - Course administration  
@@ -129,7 +131,7 @@ mostly invloves scrum documents
 
 - [Scrum-kanban (Trello)](https://trello.com/b/EkXW1ghb/apixfamily-kanban)
 
-- [Figuma](https://www.figma.com/design/38NwcZ9YrR6ds8CT7imP0t/Final-Project_Course-hub?node-id=1-620&p=f&t=IWVQu6bzu3Sx8wwt-0)
+- [Figma](https://www.figma.com/design/38NwcZ9YrR6ds8CT7imP0t/Final-Project_Course-hub?node-id=1-620&p=f&t=IWVQu6bzu3Sx8wwt-0)
 
 - [Data structures](https://docs.google.com/spreadsheets/d/18v7oqdJ9FNG5TtMjKZ4cLmUq4fGoFygxiAWM-Kv3Clo/edit?gid=1682386802#gid=1682386802)
 ## Authors
