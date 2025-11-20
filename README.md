@@ -1,43 +1,129 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Course-Hub
 
-## Available Scripts
+This is a course-hub project made by React.
+It has Course-search, Course-Enroll, Course-management.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Home  
+Display course, sample images, login
+- Course Search
+Searching courses, filtering by side menu, and navigate to Course Detail.
+- Dashboards
+Display student-dashboard, teacher-dashboard, admin-dashboard by the login info
+- Course administration
+The admin dashboard must allow the user to add, edit, and delete courses. Once the course information is updated, it will appear in the course list.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Run Locally
 
-### `npm run build`
+Clone the project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  git clone https://github.com/MatheusPaternez/course-hub-react-app
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Go to the project directory
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+  cd course-hub-react-app
+```
 
-### `npm run eject`
+Install dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+  npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Start the server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+  npm run start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Repo-Structure
+
+- main
+mostly invloves scrum documents
+- Sprint1  
+  basic page Design & UI with react
+- Sprint2  
+  CORE CRUD Course management, Course Search,login
+- Sprint3  
+  CSS polish, code polish
+## API & DB
+
+## API Reference
+
+#### Get all courses
+
+```http
+  GET /api/courses
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `N/A` | `---` | `---` |
+
+#### Get course details
+
+```http
+  GET /api/course-detail
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `N/A`      | `---` | `---` |
+
+#### Get mywork data
+
+
+```http
+  GET /api/mywork
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `N/A`      | `---` | `---` |
+
+
+## E-R database
+
+#### COURSES
+| COLUMN | Type     | KEY               |
+| :-------- | :------- | :------------------------- |
+| `id` | `String` | `✓` |
+| `author` | `String` | `---` |
+| `category` | `String` | `---` |
+| `title` | `String` | `---` |
+| `rating` | `double` | `---` |
+| `level` | `Number` | `---` |
+| `image` | `String` | `---` |
+
+#### COURSES-DETAIL
+| COLUMN | Type     | KEY               |
+| :-------- | :------- | :------------------------- |
+| `id` | `String` | `✓` |
+| `courseOverview` | `String` | `---` |
+| `whatYouWillLearn` | `String` | `---` |
+| `curriculum` | `Array[String]` | `---` |
+
+#### MY-WORK
+| COLUMN | Type     | KEY               |
+| :-------- | :------- | :------------------------- |
+| `courseId` | `String` | `✓` |
+| `author` | `String` | `---` |
+| `workTitle` | `String` | `---` |
+| `like` | `double` | `---` |
+| `team` | `String` | `---` |
+| `category` | `String` | `---` |
+| `imgPath` | `String` | `---` |
+| `status` | `String` | `---` |
+| `grade` | `double` | `---` |  
 
 ## Learn More
 
@@ -68,3 +154,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Authors
+
+- [@MatheusPaternez](https://github.com/MatheusPaternez)
+- [@Tianaaaaa](https://github.com/tianakim7691-netizen)
+- [@kent2664](https://github.com/kent2664)
