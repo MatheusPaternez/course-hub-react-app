@@ -30,10 +30,8 @@ export default function App() {
                     <CourseHandlersProvider>
                         <Routes>
                             <Route path='login' element={<LoginPopup />} />
-
                             <Route path='home' element={<HomePage />} />
                             <Route index element={<HomePage />} />
-                            {/* <Route path="/:pageId/:categoryId?" element={<CourseSearch />} /> */}
                             <Route path="/dashboard-admin" element={<DashboardAdmin />} />
                             <Route path="/dashboard-teacher" element={<DashboardTeacher />} />
                             <Route path="dashboard" element={<DashboardStudent />} />

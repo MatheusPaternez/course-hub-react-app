@@ -35,21 +35,19 @@ function Subvar() {
     ];
 
     return (
-        <div className="w-full h-screen text-white flex flex-col gap-6 py-10 mt-20">
+        <div className="w-full md:h-screen h-auto text-white flex md:flex-col flex-row md:gap-6 gap-4 py-6 md:py-10 mt-4 md:mt-20 items-center md:items-start px-4 md:px-0">
             {menu.map((item) => (
                 <button
                     key={item.key}
                     onClick={() => setActive(item.key)}
-                    className={`flex items-center gap-4 pl-6 py-3 transition-all
-                    `}
+                    className={`flex items-center gap-4 md:pl-6 pl-2 py-2 md:py-3 transition-all w-full md:w-auto justify-center md:justify-start`}
                 >
                     <img
                         src={active === item.key ? item.activeIcon : item.icon}
                         className={`${active === item.key ? "w-9 h-9" : "w-6 h-6"}`}
                     />
                     <span
-                        className={`
-                        font-medium
+                        className={`hidden md:inline-block font-medium
                         ${active === item.key
                                 ? "text-[#2D9CDB] text-base"   // select
                                 : "text-white text-sm"         // unselect
@@ -147,11 +145,11 @@ export default function DashboardAdmin() {
         setIsExpanded(!isExpanded);
     };
 
-    const containerClasses = `h-90 min-w-full w-max flex-shrink-0 overflow-x-hidden col-span-3 
+    const containerClasses = `min-w-full w-full flex-shrink-0 overflow-x-hidden col-span-3 
     ${isExpanded
             ? 'h-auto overflow-y-visible' //delete over-flow
-            : 'h-90 overflow-y-scroll'    //normal display
-        }
+            : 'max-h-[36rem] overflow-y-auto'    //normal display
+        } md:max-h-[36rem]
   `;
 
     if (isLoading) return <p className="max-w-10xl mx-auto px-6 center-text text-gray-400 text-xl"> Loading ... </p>;
@@ -162,26 +160,26 @@ export default function DashboardAdmin() {
         <>
             <Header />
             <main>
-                <div className="w-full h-auto bg-[#001c27] grid grid-cols-[250px_1fr]">
+                <div className="w-full h-auto bg-[#001c27] grid grid-cols-1 md:grid-cols-[250px_1fr]">
                     <Subvar />
-                    <div className="mt-12 p-10 w-full pr-12 bg-gray-50 rounded-4xl col-start-2">
-                        <div className="w-full items-center flex flex-row relative mt-10 ml-20">
+                    <div className="mt-6 md:mt-12 p-6 md:p-10 w-full pr-4 md:pr-12 bg-gray-50 rounded-2xl md:rounded-4xl col-start-2">
+                        <div className="w-full items-center flex flex-row relative mt-4 md:mt-10 ml-2 md:ml-20">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-4 left-0">
                                 <path d="M11 22V8.25H22V22M0 22V13.75H8.25V22M11 5.5V0H22V5.5M0 11V0H8.25V11" fill="#2D9CDB" />
                             </svg>
 
-                            <h2 className="font-medium text-3xl col-span-2 col-start-2">Dashboard-Admin</h2>
+                            <h2 className="font-medium text-2xl md:text-3xl col-span-2 col-start-2">Dashboard-Admin</h2>
                         </div>
 
-                        <div className="w-full grid grid-cols-3 gap-4 items-center justify-center p-20">
-                            <div className="flex flex-row justify-between col-start-1 col-span-2"><p className="font-bold">My profile</p> <a href="#" className="text-[#2D9CDB]">Edit</a></div>
-                            <div className="flex flex-row justify-between col-start-3 col-span-1"><p className="font-bold">Events</p> <a href="#" className="text-[#2D9CDB]">Show all</a></div>
-                            <div className="h-[21rem] min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-start-1 col-span-2 flex flex-row items-center justify-between">
+                        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 items-center justify-center p-6 md:p-20">
+                            <div className="flex flex-row justify-between md:col-start-1 md:col-span-2"><p className="font-bold">My profile</p> <a href="#" className="text-[#2D9CDB]">Edit</a></div>
+                            <div className="flex flex-row justify-between md:col-start-3 md:col-span-1"><p className="font-bold">Events</p> <a href="#" className="text-[#2D9CDB]">Show all</a></div>
+                            <div className="md:h-[21rem] h-auto w-full flex-shrink-0 overflow-hidden shadow-md md:col-start-1 md:col-span-2 flex flex-row items-center justify-between bg-white p-4 rounded-lg">
                                 <div className="flex flex-col flex-1 items-center justify-between">
                                     <img className="w-20 h-20 object-cover" alt="User icon" src={UserIcon}></img>
                                     <p className="font-bold pt-2 text-lg">{user?.name}</p>
                                 </div>
-                                <div className="mt-4 px-2 flex-3 grid grid-cols-2 grid-rows-2 gap-2">
+                                <div className="mt-4 px-2 flex-3 grid grid-cols-2 grid-rows-6 gap-2">
                                     <p className="text-lg">{user?.role} ID</p>
                                     <p className="text-lg text-gray-500">A-01</p>
                                     <p className="text-lg">Department</p>
@@ -194,13 +192,13 @@ export default function DashboardAdmin() {
                                     <p className="text-lg text-gray-500">+1 (672) 727-4874</p>
                                 </div>
                             </div>
-                            <div className="h-[21rem] min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-start-3 col-span-1">
+                            <div className="md:h-[21rem] h-auto w-full flex-shrink-0 overflow-hidden shadow-md md:col-start-3 md:col-span-1 bg-white rounded-lg">
                                 <div className="p-4">
                                     <div className="flex justify-between items-center h-4 p-4 text-gray-600 rounded-t-lg">
                                         <button className="text-xl font-bold p-2 hover:bg-blue-500 rounded-full">
                                             &lt;
                                         </button>
-                                        <h2 className="text-lg font-semibold">
+                                        <h2 className="text-lg font-semibold leading-none">
                                             Nov. 2025
                                         </h2>
                                         <button onClick={() => { setDate(prevDate => ({ ...prevDate, month: prevDate.month + 1 })) }} className="text-xl font-bold p-2 hover:bg-blue-500 rounded-full">
@@ -220,18 +218,18 @@ export default function DashboardAdmin() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex flex-row justify-between col-start-1 col-span-3"><p className="font-bold">Course Management</p> <div onClick={toggleExpand} className="text-[#2D9CDB] cursor-pointer hover:underline hover:text-blue-800 transition duration-150">Show all</div></div>
-                            <div className={containerClasses}>
+                            <div className="flex flex-row justify-between md:col-start-1 md:col-span-3"><p className="font-bold">Course Management</p> <div onClick={toggleExpand} className="text-[#2D9CDB] cursor-pointer hover:underline hover:text-blue-800 transition duration-150">Show all</div></div>
+                            <div className={containerClasses + " w-full bg-white rounded-md p-4 md:p-0"}>
                                 {/* <CourseListSearch items={filteredAssignments} /> */}
                                 {courses && courses.map((item, index) => (<CourseListDetail key={index} courseData={item} onEditClick={() => { handlerClick("edit", item.id) }} onDeleteClick={() => { handlerClick("delete", item.id) }} />))}
 
                             </div>
-                            <div className="flex flex-row items-center col-start-2 justify-center">
+                            <div className="flex flex-row items-center md:col-start-2 justify-center">
                                 <div className="flex flex-row w-full text-[#2D9CDB] text-2xl items-center cursor-pointer space-x-2 hover:underline hover:text-blue-800 transition duration-150" onClick={() => handlerClick("add")}>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9.99984 1.66663C5.39734 1.66663 1.6665 5.39746 1.6665 9.99996C1.6665 14.6025 5.39734 18.3333 9.99984 18.3333C14.6023 18.3333 18.3332 14.6025 18.3332 9.99996C18.3332 5.39746 14.6023 1.66663 9.99984 1.66663ZM14.1665 10.8333H10.8332V14.1666H9.1665V10.8333H5.83317V9.16663H9.1665V5.83329H10.8332V9.16663H14.1665V10.8333Z" fill="#2D9CDB" />
                                     </svg>
-                                    <p>Add Course</p>
+                                    <p className="text-base md:text-lg">Add Course</p>
                                 </div>
                             </div>
                         </div>
