@@ -119,14 +119,14 @@ export default function DashboardStudent() {
         <>
         <Header />
         <main>
-            <div className="bg-[#001c27] min-h-screen grid grid-cols-1 md:grid-cols-[250px_1fr]">
+            <div className="bg-[#001c27] min-h-screen grid grid-cols-[200px_1fr]">
          <Subvar />
-        <div className="w-full bg-gray-50 p-6 md:p-10 rounded-2xl md:rounded-3xl mr-0 md:mr-10 mt-6 md:mt-12">
-            <div className="w-full flex items-center gap-3 ml-2 md:ml-20 mt-4 md:mt-10">
+        <div className="w-full bg-gray-50 p-10 rounded-tl-3xl mt-12">
+            <div className="w-full flex items-center gap-3 pl-10 mt-10">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 22V8.25H22V22M0 22V13.75H8.25V22M11 5.5V0H22V5.5M0 11V0H8.25V11" fill="#2D9CDB" />
                 </svg>
-                <h2 className="font-semibold text-2xl md:text-3xl">Dashboard-Student</h2>
+                <h2 className="text-3xl">Dashboard-Student</h2>
             </div>
 
                     {/*  Profile & Events */}
@@ -150,21 +150,21 @@ export default function DashboardStudent() {
                                 <a href="#">
                                     <img src={UserEditIcon} className="w-28 h-28 md:w-19 md:h-19 object-cover" />
                                 </a>
-                                <p className="font-normal text-lg mt-4 md:mt-5">Kenta Onzo</p>
+                                <p className="font-normal text-lg mt-5">Matheus Paternez</p>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-[130px_1fr] gap-y-2 gap-x-4 flex-1">
                                 <p className="text-lg font-normal">Student ID</p>
-                                <p className="text-lg font-normal text-[#929292]">S-0123</p>
+                                <p className="text-lg font-normal text-[#929292]">S-01</p>
 
                                 <p className="text-lg font-normal">Position</p>
                                 <p className="text-lg font-normal text-[#929292]">Front developer</p>
 
                                 <p className="text-lg font-normal">E-mail</p>
-                                <p className="text-lg font-normal text-[#929292] truncate">kentakentakenta@gmail.com</p>
+                                <p className="text-lg font-normal text-[#929292] truncate">matheus@gmail.com</p>
 
                                 <p className="text-lg font-normal">Phone</p>
-                                <p className="text-lg font-normal text-[#929292]">+1 778-778-7788</p>
+                                <p className="text-lg font-normal text-[#929292]">+1 (437) 299-2585</p>
 
                                 <p className="text-lg font-normal">Portfolio</p>
                                 <p className="text-lg font-normal text-[#929292] truncate">https://github.com/MatheusPaternez</p>

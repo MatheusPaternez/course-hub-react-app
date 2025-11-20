@@ -162,7 +162,7 @@ export default function DashboardTeacher() {
         <>
         <Header/>
         <main>
-            <div className="w-full h-auto bg-[#001c27] grid grid-cols-1 md:grid-cols-[250px_1fr]">
+            <div className="w-full h-auto bg-[#001c27] grid grid-cols-[200px_1fr]">
                 <Subvar />
                 <div className="w-full mt-6 md:mt-12 p-6 md:p-10 pr-4 md:pr-12 bg-gray-50 rounded-2xl md:rounded-4xl col-start-2">
                     <div className="w-full items-center flex flex-row relative mt-4 md:mt-10 ml-2 md:ml-20">
@@ -170,7 +170,7 @@ export default function DashboardTeacher() {
                             <path d="M11 22V8.25H22V22M0 22V13.75H8.25V22M11 5.5V0H22V5.5M0 11V0H8.25V11" fill="#2D9CDB" />
                         </svg>
 
-                        <h2 className="font-medium text-2xl md:text-3xl col-span-2 col-start-2 ">Dashboard-Teacher</h2>
+                        <h2 className="font-medium font-bold text-3xl col-span-2 col-start-2 ">Dashboard-Teacher</h2>
                     </div>
 
                     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 items-center justify-center p-6 md:p-20">
@@ -179,7 +179,7 @@ export default function DashboardTeacher() {
                         <div className="md:h-[21rem] h-auto w-full flex-shrink-0 overflow-hidden shadow-md md:col-start-1 md:col-span-2 flex flex-row items-center justify-between bg-white p-4 rounded-lg">
                             <div className="flex flex-col flex-1 items-center justify-between">
                                 <img className="w-20 h-20 object-cover" alt="User icon" src={UserIcon}></img>
-                                <p className="font-bold text-lg">{user?.name}</p>
+                                <p className="font-bold pt-2 text-lg">{user?.name}</p>
                             </div>
                             <div className="mt-4 px-2 flex-3 grid grid-cols-2 grid-rows-2 gap-2">
                                 <p className="text-lg">{user?.role} ID</p>
@@ -191,7 +191,7 @@ export default function DashboardTeacher() {
                                 <p className="text-lg">Specialization</p>
                                 <p className="text-lg text-gray-500">React, Java Script</p>
                                 <p className="text-lg">Phone</p>
-                                <p className="text-lg text-gray-500">+1 778-778-7788</p>
+                                <p className="text-lg text-gray-500">+1 (778) 872-4484</p>
                             </div>
                         </div>
                         <div className="md:h-[21rem] h-auto w-full flex-shrink-0 overflow-hidden shadow-md md:col-start-3 md:col-span-1 bg-white rounded-lg">
