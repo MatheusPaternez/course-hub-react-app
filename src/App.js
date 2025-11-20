@@ -14,6 +14,7 @@ import CourseLayout from './components/CourseLayout';
 import { CourseHandlersProvider } from './components/CourseHandlersContext';
 import { AuthProvider } from './contexts/auth';
 import useAuth from './hooks/useAuth';
+import NotFound from './pages/NotFound';
 
 // Private route component using Auth context
 const Private = ({ Compo }) => {
@@ -35,12 +36,13 @@ export default function App() {
                             <Route path="/dashboard-admin" element={<DashboardAdmin />} />
                             <Route path="/dashboard-teacher" element={<DashboardTeacher />} />
                             <Route path="dashboard" element={<DashboardStudent />} />
-                            <Route path="/:pageId/:categoryId?" element={<CourseLayout />}>
+                            <Route path="/courses/:categoryId?" element={<CourseLayout />}>
                                 <Route index element={<CourseSearch />} />
                                 <Route path=":categoryId/:courseId" element={<CourseDetail />} />
                                 <Route path='section/:courseId' element={<CoursePageSection />} />
                             </Route>
                             <Route path="/content/:mode/:courseId?" element={<ContentManagement />} />
+                            <Route path="*" element={<NotFound />} />
                         </Routes>
                     </CourseHandlersProvider>
                 </BrowserRouter>

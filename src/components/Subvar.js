@@ -9,7 +9,7 @@ import iconCyber from './icons/Cyber';
 import iconUxui from './icons/Uxui';
 export default function Subvar() {
     //get the pageId from the URL parameters
-    const { pageId } = useParams();
+    const { pageId='courses' } = useParams();
     const categories = [];
     console.log("Subvar pageId:", pageId);
 
