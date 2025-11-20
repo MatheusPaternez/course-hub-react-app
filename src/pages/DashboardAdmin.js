@@ -179,11 +179,11 @@ export default function DashboardAdmin() {
                             <div className="h-[21rem] min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-start-1 col-span-2 flex flex-row items-center justify-between">
                                 <div className="flex flex-col flex-1 items-center justify-between">
                                     <img className="w-20 h-20 object-cover" alt="User icon" src={UserIcon}></img>
-                                    <p className="font-bold text-lg">{user?.name}</p>
+                                    <p className="font-bold pt-2 text-lg">{user?.name}</p>
                                 </div>
                                 <div className="mt-4 px-2 flex-3 grid grid-cols-2 grid-rows-2 gap-2">
                                     <p className="text-lg">{user?.role} ID</p>
-                                    <p className="text-lg text-gray-500">A-1003</p>
+                                    <p className="text-lg text-gray-500">A-01</p>
                                     <p className="text-lg">Department</p>
                                     <p className="text-lg text-gray-500">Frontend</p>
                                     <p className="text-lg">Experience</p>
@@ -191,7 +191,7 @@ export default function DashboardAdmin() {
                                     <p className="text-lg">Specialization</p>
                                     <p className="text-lg text-gray-500">React, Java Script</p>
                                     <p className="text-lg">Phone</p>
-                                    <p className="text-lg text-gray-500">+1 778-778-7788</p>
+                                    <p className="text-lg text-gray-500">+1 (672) 727-4874</p>
                                 </div>
                             </div>
                             <div className="h-[21rem] min-w-full w-max flex-shrink-0 overflow-hidden shadow-md col-start-3 col-span-1">
