@@ -42,7 +42,7 @@ export default function CourseDetail() {
     return (
         <>
             <div className="w-full min-h-screen bg-[#001c27]">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8 py-8 lg:py-12">
+                <div className="w-full mx-auto px-4 py-8 lg:px-0">
                     <div className="flex flex-col lg:flex-row gap-8">
                         {/* Sidebar: visible on large screens */}
                         <aside className="hidden lg:block w-[250px]">
@@ -50,7 +50,7 @@ export default function CourseDetail() {
                         </aside>
 
                         {/* Main content */}
-                        <main className="flex-1 bg-gray-50 p-6 md:p-8 rounded-2xl">
+                        <main className="flex-1 bg-gray-50 p-6 md:p-8 rounded-2xl lg:rounded-tl-2xl lg:rounded-tr-none lg:rounded-br-none lg:rounded-bl-none">
                             <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
                                 <div className="flex-shrink-0">
                                     <IconRenderer iconName={categoryId} />
