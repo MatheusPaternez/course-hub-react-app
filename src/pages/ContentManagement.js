@@ -54,12 +54,12 @@ function Subvar() {
     ];
 
     return (
-        <div className="w-full h-screen text-white flex flex-col gap-6 py-10 mt-20">
+        <div className="w-full md:h-screen h-auto text-white flex md:flex-col flex-row md:gap-6 gap-4 py-6 md:py-10 mt-4 md:mt-20 items-center md:items-start px-4 md:px-0">
             {menu.map((item) => (
                 <button
                     key={item.key}
                     onClick={() => setActive(item.key)}
-                    className="flex items-center gap-4 pl-6 py-3 transition-all"
+                    className="flex items-center gap-4 md:pl-6 pl-2 py-2 md:py-3 transition-all w-full md:w-auto justify-center md:justify-start"
                 >
                     {/*if i click icon than show active not than show basic*/}
                     <img
@@ -67,7 +67,7 @@ function Subvar() {
                         className={`${active === item.key ? "w-9 h-9" : "w-6 h-6"}`}
                     />
                     <span
-                        className={`font-medium ${active === item.key ? "text-[#2D9CDB] text-base" : "text-white text-sm"
+                        className={`hidden md:inline-block font-medium ${active === item.key ? "text-[#2D9CDB] text-base" : "text-white text-sm"
                             } break-words`}
                     >
                         {item.label}
@@ -189,27 +189,27 @@ export default function ContentManagement() {
     return (
         <><Header />
         <main>
-            <div className="bg-[#001c27] min-h-screen grid grid-cols-[250px_1fr]">
+            <div className="bg-[#001c27] min-h-screen grid grid-cols-1 md:grid-cols-[250px_1fr]">
                 <Subvar />
 
                 {/* Main content box */}
-                <div className="w-full bg-gray-50 p-10 rounded-3xl mr-10 mt-12">
+                <div className="w-full bg-gray-50 p-6 md:p-10 rounded-2xl md:rounded-3xl mr-0 md:mr-10 mt-6 md:mt-12">
 
                     {/* Top title */}
-                    <div className="w-full flex items-center gap-3 ml-20 mt-10">
+                    <div className="w-full flex items-center gap-3 ml-2 md:ml-20 mt-4 md:mt-10">
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M11 22V8.25H22V22M0 22V13.75H8.25V22M11 5.5V0H22V5.5M0 11V0H8.25V11"
                                 fill="#2D9CDB" />
                         </svg>
-                        <h2 className="font-semibold text-3xl">Contents Management</h2>
+                        <h2 className="font-semibold text-2xl md:text-3xl">Contents Management</h2>
                     </div>
 
                     {/* Form container */}
-                    <div className="bg-white p-10 mt-10 ml-20 max-w-5xl">
+                    <div className="bg-white p-6 md:p-10 mt-6 md:mt-10 ml-2 md:ml-20 max-w-full md:max-w-10xl rounded-lg">
 
                         {/* Course ID */}
-                        <div className="mb-10">
+                        <div className="mb-6 md:mb-10">
                             <label className="block font-medium mb-2">
                                 Course ID<span className="text-red-500">*</span>
                             </label>
@@ -225,7 +225,7 @@ export default function ContentManagement() {
                         </div>
 
                         {/* Course Name + Course Type */}
-                        <div className="grid grid-cols-2 gap-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
                             <div>
                                 <label className="block font-medium mb-2">
                                     Course Name<span className="text-red-500">*</span>
@@ -258,7 +258,7 @@ export default function ContentManagement() {
                         </div>
 
                         {/* Course Introduce */}
-                        <div className="mt-8">
+                        <div className="mt-6 md:mt-8">
                             <label className="block font-medium mb-2">Course Introduce</label>
                             <textarea
                                 className="w-full bg-gray-100 p-3 rounded-md h-20"
@@ -269,7 +269,7 @@ export default function ContentManagement() {
                         </div>
 
                         {/* Course Level + Course Time */}
-                        <div className="grid grid-cols-2 gap-10 mt-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-6 md:mt-8">
                             <div>
                                 <label className="block font-medium mb-2">Course Level<span className="text-red-500">*</span></label>
                                 <select
@@ -299,7 +299,7 @@ export default function ContentManagement() {
                         </div>
 
                         {/* Teacher Name + Select Date */}
-                        <div className="grid grid-cols-2 gap-10 mt-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-6 md:mt-8">
                             <div>
                                 <label className="block font-medium mb-2">Teacher Name<span className="text-red-500">*</span></label>
                                 <input
@@ -324,10 +324,10 @@ export default function ContentManagement() {
                         </div>
 
                         {/* Submit Button */}
-                        <div className="flex justify-end mt-10">
+                        <div className="flex justify-end mt-6 md:mt-10">
                             <button
                                 onClick={handleSubmit}
-                                className="bg-[#2D9CDB] text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition flex items-center gap-2"
+                                className="bg-[#2D9CDB] text-white px-6 md:px-8 py-2 md:py-3 rounded-lg hover:bg-blue-600 transition flex items-center gap-2"
                             >
                                 Submit →
                             </button>

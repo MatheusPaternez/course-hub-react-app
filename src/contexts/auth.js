@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
 
     // Predefined users (already registered)
     const initialUsers = [
-        { name: "Matheus", email: "matheusgfpaternez2006@gmail.com", password: "matt", role: "student" },
+        { name: "Matheus", email: "matheus@gmail.com", password: "matt", role: "student" },
         { name: "Tiana", email: "tiana@gmail.com", password: "tiana", role: "teacher" },
         { name: "Kenta", email: "kenta@gmail.com", password: "kenta", role: "admin" },
     ];

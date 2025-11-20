@@ -38,13 +38,13 @@ export default function CourseSearch() {
     // return the loading or error state
     return (
         <>
-            <div className="w-full h-auto pl-8 pt-6 bg-[#001c27] grid grid-cols-[250px_7fr] overflow-x-hidden ">
+            <div className="w-full h-auto bg-[#001c27] grid grid-cols-[250px_7fr] overflow-x-hidden ">
                 {/*<Navbar />/* Navbar component */}
                 <Subvar />
-                <div className="mt-4 ml-12 w-full h-auto pr-12 min-w-[60rem] bg-gray-50 p-6 rounded-4xl col-start-2">
-                    <div className="w-full grid grid-cols-[4rem_1fr_1fr] items-center justify-between relative bg-gray-50">
+                <div className="p-10 w-full bg-gray-50 pr-12 rounded-4xl col-start-2 mt-12">
+                    <div className="w-full grid grid-cols-[4rem_1fr_1fr] items-center justify-between relative bg-gray-50  mt-10 ml-20">
                         <IconRenderer iconName={categoryId}/>
-                        <h2 className="font-bold text-3xl col-span-2 col-start-2">{titleMap[categoryId]?.title}</h2>
+                        <h2 className="font-medium text-3xl  col-span-2 col-start-2">{titleMap[categoryId]?.title}</h2>
                         <p className="text-xl font-semibold col-span-1 ">{titleMap[categoryId]?.detail}</p>
                         <div className="bg-gray-200 w-1/3 h-12 col-span-1 rounded-xl flex items-center justify-center absolute left-[50rem] top-0 mt-6 ml-6">
                             <svg className="mx-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

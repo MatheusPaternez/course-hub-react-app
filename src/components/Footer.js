@@ -62,12 +62,11 @@ export default function Footer(){
                 <div className="flex flex-col md:flex-row items-center justify-between mt-12 pt-6 border-t border-white/5">
                     {/* Left: logo and credits */}
                     <div className="flex items-center gap-4">
-                        <div className="w-8 h-8 rounded-full flex items-center justify-center" aria-hidden="true">
+                        <div className="w-32 rounded-full flex items-center justify-center" aria-hidden="true">
                             <img alt="Logo" src={Logo}/>
                         </div>
 
                         <div className="text-sm text-gray-300">
-                            <span className="font-semibold text-blue-500">Sync-Hub</span>
                             <span className="mx-4">© 2025 Project by</span>
                             <span className="inline-block align-middle"><img className="w-20" alt="Api Family Logo" src={ApiFamily}/></span>
                         </div>
