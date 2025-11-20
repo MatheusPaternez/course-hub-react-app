@@ -31,7 +31,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd course-hub-react-app
 ```
 
 Install dependencies
