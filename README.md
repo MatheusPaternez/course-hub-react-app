@@ -10,11 +10,11 @@ It has Course-search, Course-Enroll, Course-management.
 
 - Home  
 Display course, sample images, login
-- Course Search
+- Course Search  
 Searching courses, filtering by side menu, and navigate to Course Detail.
-- Dashboards
+- Dashboards  
 Display student-dashboard, teacher-dashboard, admin-dashboard by the login info
-- Course administration
+- Course administration  
 The admin dashboard must allow the user to add, edit, and delete courses. Once the course information is updated, it will appear in the course list.
 
 
@@ -47,7 +47,7 @@ Start the server
 
 ## Repo-Structure
 
-- main
+- main  
 mostly invloves scrum documents
 - Sprint1  
   basic page Design & UI with react
